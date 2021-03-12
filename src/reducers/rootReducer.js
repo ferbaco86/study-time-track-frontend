@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
-import setUserReducer from './user';
+import setCredentialsReducer from './credentials';
 
 const rootReducer = combineReducers({
-  setUser: setUserReducer,
+  credentials: setCredentialsReducer,
 });
 
 export default rootReducer;

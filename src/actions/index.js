@@ -1,15 +1,15 @@
-import { SET_USER, RESET_USER, SET_USER_ERROR } from './constants';
+import { SET_CREDENTIAL_USERNAME, SET_CREDENTIAL_PASSWORD, RESET_CREDENTIALS } from './constants';
 
-export const setUser = data => ({
-  type: SET_USER,
-  data,
+export const setCredentialUsername = username => ({
+  type: SET_CREDENTIAL_USERNAME,
+  username,
 });
 
-export const setUserError = error => ({
-  type: SET_USER_ERROR,
-  error,
+export const setCredentialPassword = password => ({
+  type: SET_CREDENTIAL_PASSWORD,
+  password,
 });
 
-export const resetUser = () => ({
-  type: RESET_USER,
+export const resetCredentials = () => ({
+  type: RESET_CREDENTIALS,
 });
