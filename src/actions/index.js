@@ -21,9 +21,9 @@ export const setDataPending = () => ({
   type: SET_DATA_PENDING,
 });
 
-export const setDataSuccess = data => ({
+export const setDataSuccess = user => ({
   type: SET_DATA_SUCCESS,
-  data,
+  user,
 });
 
 export const setDataError = error => ({
