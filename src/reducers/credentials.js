@@ -8,15 +8,12 @@ const initialState = {
 const setCredentialsReducer = (state = initialState, action) => {
   switch (action.type) {
     case SET_CREDENTIAL_USERNAME:
-      console.log('username', action.username);
       return {
         ...state,
         username: action.username,
       };
 
     case SET_CREDENTIAL_PASSWORD:
-      console.log('password', action.password);
-
       return {
         ...state,
         password: action.password,

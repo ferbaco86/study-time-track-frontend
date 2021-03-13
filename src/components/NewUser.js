@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setCredentialUsername, setCredentialPassword } from '../actions/index';
 
 const NewUser = () => {
   const dispatch = useDispatch();
-  const { credentials } = useSelector(state => state);
+  // const { credentials } = useSelector(state => state);
   const setCredentialName = e => {
     const input = e.target.value;
     dispatch(setCredentialUsername(input));
