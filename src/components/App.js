@@ -1,8 +1,8 @@
-import NewUser from './NewUser';
+import SignUser from './SignUser';
 
 function App() {
   return (
-    <NewUser />
+    <SignUser />
   );
 }
 

@@ -3,10 +3,19 @@ import {
 } from '../actions';
 import store from '../reducers/store';
 
-const setData = () => dispatch => {
+const setData = signAction => dispatch => {
   const { username, password } = store.getState().credentials;
-  console.log(username, password);
-  const apiUrl = 'http://localhost:3000/users';
+  let apiUrl = '';
+  switch (signAction) {
+    case 'sign up':
+      apiUrl = 'http://localhost:3000/users';
+      break;
+    case 'log in':
+      apiUrl = 'http://localhost:3000/auto_login';
+      break;
+    default:
+      break;
+  }
   const config = {
     mode: 'cors',
     method: 'POST',

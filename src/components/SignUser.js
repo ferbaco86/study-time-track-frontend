@@ -1,12 +1,14 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import PropTypes from 'prop-types';
 import { setCredentialUsername, setCredentialPassword } from '../actions/index';
 import setData from '../api/setData';
 import ErrorMessage from './ErrorMessage';
 import LoaderSpinner from './LoaderSpinner';
 
-const NewUser = () => {
+const SignUser = props => {
+  const { buttonText } = props;
   const dispatch = useDispatch();
   const { user } = useSelector(state => state);
   const setCredentialName = e => {
@@ -14,8 +16,9 @@ const NewUser = () => {
     dispatch(setCredentialUsername(input));
   };
 
-  const setUser = () => {
-    dispatch(setData());
+  const setUser = e => {
+    const signAction = e.target.textContent.toLowerCase();
+    dispatch(setData(signAction));
   };
 
   const setCredentialPass = e => {
@@ -44,10 +47,14 @@ const NewUser = () => {
         <input id="username" type="text" onChange={setCredentialName} />
         <label htmlFor="password">Password</label>
         <input id="password" type="password" onChange={setCredentialPass} />
-        <button type="button" onClick={setUser}>Sign Up</button>
+        <button type="button" onClick={setUser}>{buttonText}</button>
       </form>
     </>
   );
 };
 
-export default NewUser;
+SignUser.propTypes = {
+  buttonText: PropTypes.string.isRequired,
+};
+
+export default SignUser;
