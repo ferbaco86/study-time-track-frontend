@@ -32,8 +32,8 @@ const setData = signAction => dispatch => {
   fetch(apiUrl, config)
     .then(response => response.json())
     .then(data => {
-      if (!data) {
-        const errorMessage = 'No Data';
+      if (data.errors || data.failure) {
+        const errorMessage = data.errors ? data.errors : data.failure;
         throw (errorMessage);
       }
 

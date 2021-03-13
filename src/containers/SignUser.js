@@ -41,7 +41,7 @@ const SignUser = props => {
     return isPending;
   };
   if (shouldComponentRender()) return <LoaderSpinner />;
-  const errorText = `API Error: ${user.error}`;
+  const errorText = `Error: ${user.error}`;
   return (
     <>
       {user.error && (
