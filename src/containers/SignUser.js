@@ -4,8 +4,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setCredentialUsername, setCredentialPassword } from '../actions/index';
 import setData from '../api/setData';
-import ErrorMessage from './ErrorMessage';
-import LoaderSpinner from './LoaderSpinner';
+import ErrorMessage from '../components/ErrorMessage';
+import LoaderSpinner from '../components/LoaderSpinner';
 
 const SignUser = props => {
   const { buttonText } = props;

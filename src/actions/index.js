@@ -1,6 +1,6 @@
 import {
   SET_CREDENTIAL_USERNAME, SET_CREDENTIAL_PASSWORD, RESET_CREDENTIALS,
-  SET_DATA_PENDING, SET_DATA_SUCCESS, SET_DATA_ERROR,
+  SET_DATA_PENDING, SET_DATA_SUCCESS, SET_DATA_ERROR, RESET_DATA,
 } from './constants';
 
 export const setCredentialUsername = username => ({
@@ -29,4 +29,8 @@ export const setDataSuccess = user => ({
 export const setDataError = error => ({
   type: SET_DATA_ERROR,
   error,
+});
+
+export const resetData = () => ({
+  type: RESET_DATA,
 });

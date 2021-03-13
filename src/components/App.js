@@ -1,8 +1,8 @@
-import SignUser from './SignUser';
+import SignUser from '../containers/SignUser';
 
 function App() {
   return (
-    <SignUser />
+    <SignUser buttonText="Sign up" />
   );
 }
 
