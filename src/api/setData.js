@@ -11,7 +11,7 @@ const setData = signAction => dispatch => {
       apiUrl = 'http://localhost:3000/users';
       break;
     case 'log in':
-      apiUrl = 'http://localhost:3000/auto_login';
+      apiUrl = 'http://localhost:3000/login';
       break;
     default:
       break;
@@ -31,12 +31,14 @@ const setData = signAction => dispatch => {
   dispatch(setDataPending());
   fetch(apiUrl, config)
     .then(response => response.json())
-    .then(response => {
-      if (response.code !== 200) {
-        throw (response.status);
+    .then(data => {
+      if (!data) {
+        const errorMessage = 'No Data';
+        throw (errorMessage);
       }
-      localStorage.setItem('token', response.jwt);
-      dispatch(setDataSuccess(response.user));
+
+      localStorage.setItem('token', data.jwt);
+      dispatch(setDataSuccess(data.user));
     })
     .catch(error => {
       dispatch(setDataError(error));
