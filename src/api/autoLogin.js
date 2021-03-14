@@ -1,5 +1,4 @@
 import { setDataSuccess } from '../actions';
-import store from '../reducers/store';
 
 const autoLogin = () => dispatch => {
   const token = localStorage.getItem('token');
@@ -12,8 +11,6 @@ const autoLogin = () => dispatch => {
       .then(resp => resp.json())
       .then(data => {
         dispatch(setDataSuccess(data));
-        console.log(data);
-        console.log(store.getState().user);
       });
   }
 };

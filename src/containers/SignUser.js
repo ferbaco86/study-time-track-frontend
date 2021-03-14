@@ -1,5 +1,5 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { setCredentialUsername, setCredentialPassword } from '../actions/index';
@@ -13,6 +13,7 @@ const SignUser = props => {
   const { buttonText } = props;
   const dispatch = useDispatch();
   const { user } = useSelector(state => state);
+  const [clicked, setClicked] = useState(false);
   const setCredentialName = e => {
     const input = e.target.value;
     dispatch(setCredentialUsername(input));
@@ -20,7 +21,7 @@ const SignUser = props => {
 
   useEffect(() => {
     dispatch(autoLogin());
-  }, []);
+  }, [clicked]);
 
   const setUser = e => {
     const signAction = e.target.textContent.toLowerCase();
@@ -28,6 +29,7 @@ const SignUser = props => {
   };
 
   const getUserData = () => {
+    setClicked(true);
     dispatch(fetchData());
   };
 
@@ -35,7 +37,7 @@ const SignUser = props => {
     const input = e.target.value;
     dispatch(setCredentialPassword(input));
   };
-
+  console.log('User from SignIn component', user.user);
   const shouldComponentRender = () => {
     let isPending = false;
     if (user.pending === false || user.error !== null) {

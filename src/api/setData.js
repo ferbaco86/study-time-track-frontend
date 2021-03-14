@@ -39,7 +39,6 @@ const setData = signAction => dispatch => {
 
       localStorage.setItem('token', data.jwt);
       dispatch(setDataSuccess(data.user));
-      console.log('User is', data.user);
     })
     .catch(error => {
       dispatch(setDataError(error));
