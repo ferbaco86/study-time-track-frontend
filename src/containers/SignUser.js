@@ -1,10 +1,10 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { setCredentialUsername, setCredentialPassword } from '../actions/index';
 import setData from '../api/setData';
-import fetchData from '../api/fetchData';
 import ErrorMessage from '../components/ErrorMessage';
 import LoaderSpinner from '../components/LoaderSpinner';
 import autoLogin from '../api/autoLogin';
@@ -13,7 +13,7 @@ const SignUser = props => {
   const { buttonText } = props;
   const dispatch = useDispatch();
   const { user } = useSelector(state => state);
-  const [clicked, setClicked] = useState(false);
+  // const [clicked, setClicked] = useState(false);
   const setCredentialName = e => {
     const input = e.target.value;
     dispatch(setCredentialUsername(input));
@@ -21,23 +21,17 @@ const SignUser = props => {
 
   useEffect(() => {
     dispatch(autoLogin());
-  }, [clicked]);
+  }, []);
 
   const setUser = e => {
     const signAction = e.target.textContent.toLowerCase();
     dispatch(setData(signAction));
   };
 
-  const getUserData = () => {
-    setClicked(true);
-    dispatch(fetchData());
-  };
-
   const setCredentialPass = e => {
     const input = e.target.value;
     dispatch(setCredentialPassword(input));
   };
-  console.log('User from SignIn component', user.user);
   const shouldComponentRender = () => {
     let isPending = false;
     if (user.pending === false || user.error !== null) {
@@ -60,7 +54,7 @@ const SignUser = props => {
         <label htmlFor="password">Password</label>
         <input id="password" type="password" onChange={setCredentialPass} />
         <button type="button" onClick={setUser}>{buttonText}</button>
-        <button type="button" onClick={getUserData}>Get User Data</button>
+        <Link to="/user">User Detail</Link>
       </form>
     </>
   );

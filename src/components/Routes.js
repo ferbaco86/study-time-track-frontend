@@ -6,8 +6,8 @@ import UserDetail from './UserDetail';
 const Routes = () => (
   <BrowserRouter>
     <Switch>
-      <Route exact path="/" component={SignUser} />
-      <Route exact path="/character/:id" component={UserDetail} />
+      <Route exact path="/" render={() => <SignUser buttonText="Sign Up" />} />
+      <Route exact path="/user" component={UserDetail} />
     </Switch>
   </BrowserRouter>
 );
