@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { setCredentialUsername, setCredentialPassword } from '../actions/index';
 import setData from '../api/setData';
 import ErrorMessage from '../components/ErrorMessage';
@@ -10,10 +10,10 @@ import LoaderSpinner from '../components/LoaderSpinner';
 import autoLogin from '../api/autoLogin';
 
 const SignUser = props => {
+  const token = localStorage.getItem('token');
   const { buttonText } = props;
   const dispatch = useDispatch();
   const { user } = useSelector(state => state);
-  // const [clicked, setClicked] = useState(false);
   const setCredentialName = e => {
     const input = e.target.value;
     dispatch(setCredentialUsername(input));
@@ -45,6 +45,7 @@ const SignUser = props => {
   const errorText = `Error: ${user.error}`;
   return (
     <>
+      {token && <Redirect to="/user" />}
       {user.error && (
       <ErrorMessage message={errorText} />
       )}
@@ -54,7 +55,6 @@ const SignUser = props => {
         <label htmlFor="password">Password</label>
         <input id="password" type="password" onChange={setCredentialPass} />
         <button type="button" onClick={setUser}>{buttonText}</button>
-        <Link to="/user">User Detail</Link>
       </form>
     </>
   );
