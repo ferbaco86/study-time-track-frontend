@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
 import { setCredentialUsername, setCredentialPassword } from '../actions/index';
-import setData from '../api/setData';
+import { setUserData } from '../api/setData';
 import ErrorMessage from '../components/ErrorMessage';
 import LoaderSpinner from '../components/LoaderSpinner';
 import autoLogin from '../api/autoLogin';
@@ -25,7 +25,7 @@ const SignUser = props => {
 
   const setUser = e => {
     const signAction = e.target.textContent.toLowerCase();
-    dispatch(setData(signAction));
+    dispatch(setUserData(signAction));
   };
 
   const setCredentialPass = e => {

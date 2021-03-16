@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import autoLogin from '../api/autoLogin';
 import fetchData from '../api/fetchData';
+import AddSession from '../containers/AddSession';
 import LogOut from '../containers/LogOut';
 import ErrorMessage from './ErrorMessage';
 import LoaderSpinner from './LoaderSpinner';
@@ -39,6 +40,7 @@ const UserDetail = () => {
         { user.user.sessions
         && user.user.sessions.map(session => <h2 key={session.id}>{session.title}</h2>)}
       </div>
+      <AddSession />
       <LogOut />
     </>
   );

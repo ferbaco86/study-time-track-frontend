@@ -3,6 +3,7 @@ import {
   SET_DATA_PENDING, SET_DATA_SUCCESS, SET_DATA_ERROR, RESET_DATA,
   FETCH_USERDATA_PENDING, FETCH_USERDATA_SUCCESS, FETCH_USERDATA_ERROR,
   SET_SESSIONDATA_PENDING, SET_SESSIONDATA_SUCCESS, SET_SESSIONDATA_ERROR, RESET_SESSIONDATA,
+  SET_SESSION_TITLE,
 } from './constants';
 
 export const setCredentialUsername = username => ({
@@ -49,6 +50,11 @@ export const fetchUserDataSuccess = data => ({
 export const fetchUserDataError = error => ({
   type: FETCH_USERDATA_ERROR,
   error,
+});
+
+export const setSessionTitle = title => ({
+  type: SET_SESSION_TITLE,
+  title,
 });
 
 export const setSessionDataPending = () => ({
