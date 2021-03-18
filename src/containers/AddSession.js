@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import { Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import {
   setSessionTitle,
 } from '../actions/index';
@@ -11,6 +11,7 @@ import ErrorMessage from '../components/ErrorMessage';
 import LoaderSpinner from '../components/LoaderSpinner';
 
 const AddSession = () => {
+  const token = localStorage.getItem('token');
   const { session } = useSelector(state => state);
   const dispatch = useDispatch();
   const setTitle = e => {
@@ -39,10 +40,10 @@ const AddSession = () => {
   const errorText = `Error: ${session.error}`;
   return (
     <>
-      {/* {token && <Redirect to="/user" />} */}
       {session.error && (
       <ErrorMessage message={errorText} />
       )}
+      {!token && <Redirect to="/" />}
       <form>
         <label htmlFor="title">Title</label>
         <input onChange={setTitle} id="title" type="text" placeholder="Session Title" />

@@ -45,7 +45,7 @@ const SignUser = props => {
   const errorText = `Error: ${user.error}`;
   return (
     <>
-      {token && <Redirect to="/user" />}
+      {token && <Redirect to="/session" />}
       {user.error && (
       <ErrorMessage message={errorText} />
       )}
