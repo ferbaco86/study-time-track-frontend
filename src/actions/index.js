@@ -3,7 +3,8 @@ import {
   SET_DATA_PENDING, SET_DATA_SUCCESS, SET_DATA_ERROR, RESET_DATA,
   FETCH_USERDATA_PENDING, FETCH_USERDATA_SUCCESS, FETCH_USERDATA_ERROR,
   SET_SESSIONDATA_PENDING, SET_SESSIONDATA_SUCCESS, SET_SESSIONDATA_ERROR, RESET_SESSIONDATA,
-  SET_SESSION_TITLE,
+  SET_SESSION_TITLE, SET_SUBJECTDATA_PENDING, SET_SUBJECTDATA_SUCCESS, SET_SUBJECTDATA_ERROR,
+  RESET_SUBJECTDATA, SET_SUBJECT_TITLE, SET_SUBJECT_TIME,
 } from './constants';
 
 export const setCredentialUsername = username => ({
@@ -73,4 +74,32 @@ export const setSessionDataError = error => ({
 
 export const resetSessionData = () => ({
   type: RESET_SESSIONDATA,
+});
+
+export const setSubjectTitle = title => ({
+  type: SET_SUBJECT_TITLE,
+  title,
+});
+
+export const setSubjectTime = time => ({
+  type: SET_SUBJECT_TIME,
+  time,
+});
+
+export const setSubjectDataPending = () => ({
+  type: SET_SUBJECTDATA_PENDING,
+});
+
+export const setSubjectDataSuccess = subject => ({
+  type: SET_SUBJECTDATA_SUCCESS,
+  subject,
+});
+
+export const setSubjectDataError = error => ({
+  type: SET_SUBJECTDATA_ERROR,
+  error,
+});
+
+export const resetSubjectData = () => ({
+  type: RESET_SUBJECTDATA,
 });

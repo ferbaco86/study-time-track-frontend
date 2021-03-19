@@ -1,6 +1,7 @@
 import {
   setDataPending, setDataSuccess, setDataError, resetCredentials,
   setSessionDataPending, setSessionDataSuccess, setSessionDataError,
+  setSubjectDataPending, setSubjectDataSuccess, setSubjectDataError,
 } from '../actions';
 import store from '../reducers/store';
 
@@ -77,5 +78,38 @@ export const setSessionData = () => dispatch => {
     })
     .catch(error => {
       dispatch(setSessionDataError(error));
+    });
+};
+
+export const setSubjectData = () => dispatch => {
+  const { id } = store.getState().session;
+  const { title, time } = store.getState().subjectParams;
+  const apiUrl = 'http://localhost:3000/subjects';
+  const config = {
+    mode: 'cors',
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+      Accept: 'application/json',
+      Authorization: `Bearer ${token}`,
+    },
+    body: JSON.stringify({
+      id,
+      title,
+      time,
+    }),
+  };
+  dispatch(setSubjectDataPending());
+  fetch(apiUrl, config)
+    .then(response => response.json())
+    .then(data => {
+      if (data.error || data.failure) {
+        const errorMessage = data.error ? data.error : data.failure;
+        throw (errorMessage);
+      }
+      dispatch(setSubjectDataSuccess(data));
+    })
+    .catch(error => {
+      dispatch(setSubjectDataError(error));
     });
 };
