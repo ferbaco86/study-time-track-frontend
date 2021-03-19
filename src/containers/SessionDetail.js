@@ -3,24 +3,22 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import {
-  setSubjectTitle,
+  setSubjectName,
   setSubjectTime,
 } from '../actions/index';
 import autoLogin from '../api/autoLogin';
 import { setSubjectData } from '../api/setData';
 import ErrorMessage from '../components/ErrorMessage';
 import LoaderSpinner from '../components/LoaderSpinner';
+import LogOut from './LogOut';
 
 const SessionDetail = () => {
   const token = localStorage.getItem('token');
   const { session, subject } = useSelector(state => state);
   const dispatch = useDispatch();
-
-  console.log(session);
-
-  const setTitle = e => {
+  const setName = e => {
     const input = e.target.value;
-    dispatch(setSubjectTitle(input));
+    dispatch(setSubjectName(input));
   };
 
   const setTime = e => {
@@ -54,13 +52,17 @@ const SessionDetail = () => {
       )}
       {!token && <Redirect to="/" />}
       <h1>{session.session.title}</h1>
+      <h2>Subjects</h2>
+      {session.session.subjects
+      && session.session.subjects.map(subject => <h3 key={subject.id}>{subject.name}</h3>)}
       <form>
         <label htmlFor="title">Subject Title</label>
-        <input onChange={setTitle} id="title" type="text" placeholder="Subject Title" />
+        <input onChange={setName} id="title" type="text" placeholder="Subject Title" />
         <label htmlFor="time">Subject Time Studied</label>
         <input onChange={setTime} id="time" type="text" placeholder="Time spent studying" />
-        <Link onClick={setSubject} type="button" to={`/sessionDetail/${session.session.id}`}>Add</Link>
+        <Link onClick={setSubject} type="button" to="/sessionDetail">Add</Link>
       </form>
+      <LogOut />
     </>
   );
 };

@@ -82,8 +82,8 @@ export const setSessionData = () => dispatch => {
 };
 
 export const setSubjectData = () => dispatch => {
-  const { id } = store.getState().session;
-  const { title, time } = store.getState().subjectParams;
+  const { id } = store.getState().session.session;
+  const { name, time } = store.getState().subjectParams;
   const apiUrl = 'http://localhost:3000/subjects';
   const config = {
     mode: 'cors',
@@ -95,7 +95,7 @@ export const setSubjectData = () => dispatch => {
     },
     body: JSON.stringify({
       id,
-      title,
+      name,
       time,
     }),
   };

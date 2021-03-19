@@ -9,6 +9,7 @@ import autoLogin from '../api/autoLogin';
 import { setSessionData } from '../api/setData';
 import ErrorMessage from '../components/ErrorMessage';
 import LoaderSpinner from '../components/LoaderSpinner';
+import LogOut from './LogOut';
 
 const AddSession = () => {
   const token = localStorage.getItem('token');
@@ -36,7 +37,7 @@ const AddSession = () => {
     }
     return isPending;
   };
-  console.log(session.id);
+
   if (shouldComponentRender()) return <LoaderSpinner />;
   const errorText = `Error: ${session.error}`;
   return (
@@ -50,6 +51,7 @@ const AddSession = () => {
         <input onChange={setTitle} id="title" type="text" placeholder="Session Title" />
         <Link onClick={setSession} type="button" to="/sessionDetail">Add</Link>
       </form>
+      <LogOut />
     </>
   );
 };
