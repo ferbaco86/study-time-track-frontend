@@ -4,11 +4,12 @@ import {
 
 const initialState = {
   pending: false,
-  subject: {},
+  subject: [],
   error: null,
 };
 
 const subjectDataReducer = (state = initialState, action) => {
+  const subjects = state.subject;
   switch (action.type) {
     case SET_SUBJECTDATA_PENDING:
       return {
@@ -16,10 +17,11 @@ const subjectDataReducer = (state = initialState, action) => {
         pending: true,
       };
     case SET_SUBJECTDATA_SUCCESS:
+      subjects.push(action.subject);
       return {
         ...state,
         pending: false,
-        subject: action.subject,
+        subject: subjects,
       };
     case SET_SUBJECTDATA_ERROR:
       return {

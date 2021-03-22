@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import {
   setSessionTitle,
 } from '../actions/index';
@@ -25,8 +25,7 @@ const AddSession = () => {
     dispatch(autoLogin());
   }, []);
 
-  const setSession = e => {
-    e.preventDefault();
+  const setSession = () => {
     dispatch(setSessionData());
   };
 
@@ -51,7 +50,7 @@ const AddSession = () => {
       <form>
         <label htmlFor="title">Title</label>
         <input onChange={setTitle} id="title" type="text" placeholder="Session Title" />
-        <button type="submit" onClick={setSession}>Add</button>
+        <Link onClick={setSession} to="/sessionDetail">Add</Link>
       </form>
       <LogOut />
     </>

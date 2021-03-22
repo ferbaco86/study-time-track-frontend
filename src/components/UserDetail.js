@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import autoLogin from '../api/autoLogin';
-import fetchData from '../api/fetchData';
+import { fetchUserData } from '../api/fetchData';
 import AddSession from '../containers/AddSession';
 import LogOut from '../containers/LogOut';
 import ErrorMessage from './ErrorMessage';
@@ -13,7 +13,7 @@ const UserDetail = () => {
   const token = localStorage.getItem('token');
   useEffect(() => {
     dispatch(autoLogin());
-    dispatch(fetchData());
+    dispatch(fetchUserData());
   }, []);
   const { user } = useSelector(state => state);
   const shouldComponentRender = () => {

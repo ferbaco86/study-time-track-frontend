@@ -8,13 +8,15 @@ import {
 } from '../actions/index';
 import autoLogin from '../api/autoLogin';
 import { setSubjectData } from '../api/setData';
+import { fetchSessionData } from '../api/fetchData';
 import ErrorMessage from '../components/ErrorMessage';
 import LoaderSpinner from '../components/LoaderSpinner';
 import LogOut from './LogOut';
+import store from '../reducers/store';
 
 const SessionDetail = () => {
   const token = localStorage.getItem('token');
-  const { session } = useSelector(state => state);
+  const { session, subject } = useSelector(state => state);
   const dispatch = useDispatch();
   const setName = e => {
     const input = e.target.value;
@@ -28,6 +30,8 @@ const SessionDetail = () => {
 
   useEffect(() => {
     dispatch(autoLogin());
+    const sessionStore = store.getState().session.session;
+    if (Object.keys(sessionStore).length === 0) dispatch(fetchSessionData());
   }, []);
 
   const setSubject = () => {
@@ -43,6 +47,7 @@ const SessionDetail = () => {
     }
     return isPending;
   };
+
   if (shouldComponentRender()) return <LoaderSpinner />;
   const errorText = `Error: ${session.error}`;
   return (
@@ -55,6 +60,7 @@ const SessionDetail = () => {
       <h2>Subjects</h2>
       {session.session.subjects
       && session.session.subjects.map(subject => <h3 key={subject.id}>{subject.name}</h3>)}
+      {subject.subject && subject.subject.map(subject => <h3 key={subject.id}>{subject.name}</h3>)}
       <form>
         <label htmlFor="title">Subject Title</label>
         <input onChange={setName} id="title" type="text" placeholder="Subject Title" />
