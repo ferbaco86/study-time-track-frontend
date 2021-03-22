@@ -1,24 +1,28 @@
 import styled from 'styled-components';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
-const Container = styled.div`
+const ContainerLink = styled(Link)`
 display: flex;
 flex-direction: column;
+align-items: center;
+justify-content: center;
 color: white;`;
 
 const NavItem = props => {
-  const { icon, legend } = props;
+  const { icon, legend, path } = props;
   return (
-    <Container>
+    <ContainerLink to={path}>
       <i className={icon} />
       <small>{legend}</small>
-    </Container>
+    </ContainerLink>
   );
 };
 
 NavItem.propTypes = {
   icon: PropTypes.string.isRequired,
   legend: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
 };
 
 export default NavItem;

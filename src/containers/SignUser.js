@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
-import { setCredentialUsername, setCredentialPassword } from '../actions/index';
+import { setCredentialUsername, setCredentialPassword, setActiveTab } from '../actions/index';
 import { setUserData } from '../api/setData';
 import ErrorMessage from '../components/ErrorMessage';
 import LoaderSpinner from '../components/LoaderSpinner';
@@ -28,6 +28,7 @@ const SignUser = props => {
 
   useEffect(() => {
     dispatch(autoLogin());
+    dispatch(setActiveTab(buttonText));
   }, []);
 
   const setCredentialPass = e => {

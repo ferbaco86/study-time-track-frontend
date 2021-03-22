@@ -4,7 +4,7 @@ import {
   FETCH_USERDATA_PENDING, FETCH_USERDATA_SUCCESS, FETCH_USERDATA_ERROR,
   SET_SESSIONDATA_PENDING, SET_SESSIONDATA_SUCCESS, SET_SESSIONDATA_ERROR, RESET_SESSIONDATA,
   SET_SESSION_TITLE, SET_SUBJECTDATA_PENDING, SET_SUBJECTDATA_SUCCESS, SET_SUBJECTDATA_ERROR,
-  RESET_SUBJECTDATA, SET_SUBJECT_NAME, SET_SUBJECT_TIME,
+  RESET_SUBJECTDATA, SET_SUBJECT_NAME, SET_SUBJECT_TIME, SET_ACTIVE_TAB,
 } from './constants';
 
 export const setCredentialUsername = username => ({
@@ -102,4 +102,9 @@ export const setSubjectDataError = error => ({
 
 export const resetSubjectData = () => ({
   type: RESET_SUBJECTDATA,
+});
+
+export const setActiveTab = tab => ({
+  type: SET_ACTIVE_TAB,
+  tab,
 });

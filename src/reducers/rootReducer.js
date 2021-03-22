@@ -1,4 +1,5 @@
 import { combineReducers } from 'redux';
+import activeTabReducer from './activeTab';
 import setCredentialsReducer from './credentials';
 import dataReducer from './data';
 import sessionDataReducer from './sessionData';
@@ -15,6 +16,7 @@ const rootReducer = combineReducers({
   session: sessionDataReducer,
   subjectParams: setSubjectParamsReducer,
   subject: subjectDataReducer,
+  tab: activeTabReducer,
 });
 
 export default rootReducer;
