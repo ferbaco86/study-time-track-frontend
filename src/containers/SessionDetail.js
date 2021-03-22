@@ -14,7 +14,7 @@ import LogOut from './LogOut';
 
 const SessionDetail = () => {
   const token = localStorage.getItem('token');
-  const { session, subject } = useSelector(state => state);
+  const { session } = useSelector(state => state);
   const dispatch = useDispatch();
   const setName = e => {
     const input = e.target.value;
@@ -36,7 +36,7 @@ const SessionDetail = () => {
 
   const shouldComponentRender = () => {
     let isPending = false;
-    if (subject.pending === false || subject.error !== null) {
+    if (session.pending === false || session.error !== null) {
       isPending = false;
     } else {
       isPending = true;
@@ -47,7 +47,7 @@ const SessionDetail = () => {
   const errorText = `Error: ${session.error}`;
   return (
     <>
-      {subject.error && (
+      {session.error && (
       <ErrorMessage message={errorText} />
       )}
       {!token && <Redirect to="/" />}

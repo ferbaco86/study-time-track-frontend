@@ -1,11 +1,9 @@
 import {
-  setDataPending, setDataSuccess, setDataError, resetCredentials,
+  setDataPending, setDataSuccess, setDataError,
   setSessionDataPending, setSessionDataSuccess, setSessionDataError,
-  setSubjectDataPending, setSubjectDataSuccess, setSubjectDataError,
+  setSubjectDataPending, setSubjectDataSuccess, setSubjectDataError, resetCredentials,
 } from '../actions';
 import store from '../reducers/store';
-
-const token = localStorage.getItem('token');
 
 export const setUserData = signAction => dispatch => {
   const { username, password } = store.getState().credentials;
@@ -53,6 +51,8 @@ export const setUserData = signAction => dispatch => {
 
 export const setSessionData = () => dispatch => {
   const { title } = store.getState().sessionTitle;
+  const token = localStorage.getItem('token');
+
   const apiUrl = 'http://localhost:3000/sessions';
   const config = {
     mode: 'cors',
@@ -82,6 +82,8 @@ export const setSessionData = () => dispatch => {
 };
 
 export const setSubjectData = () => dispatch => {
+  const token = localStorage.getItem('token');
+
   const { id } = store.getState().session.session;
   const { name, time } = store.getState().subjectParams;
   const apiUrl = 'http://localhost:3000/subjects';

@@ -2,7 +2,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { setCredentialUsername, setCredentialPassword } from '../actions/index';
 import { setUserData } from '../api/setData';
 import ErrorMessage from '../components/ErrorMessage';
@@ -10,28 +10,25 @@ import LoaderSpinner from '../components/LoaderSpinner';
 import autoLogin from '../api/autoLogin';
 
 const SignUser = props => {
-  let isLogin = false;
   const token = localStorage.getItem('token');
   const { buttonText } = props;
   const dispatch = useDispatch();
   const { user } = useSelector(state => state);
+
   const setCredentialName = e => {
     const input = e.target.value;
     dispatch(setCredentialUsername(input));
   };
 
-  useEffect(() => {
-    dispatch(autoLogin());
-  }, []);
-
-  if (buttonText === 'Log In') {
-    isLogin = true;
-  }
-
   const setUser = e => {
+    e.preventDefault();
     const signAction = e.target.textContent.toLowerCase();
     dispatch(setUserData(signAction));
   };
+
+  useEffect(() => {
+    dispatch(autoLogin());
+  }, []);
 
   const setCredentialPass = e => {
     const input = e.target.value;
@@ -50,7 +47,6 @@ const SignUser = props => {
   const errorText = `Error: ${user.error}`;
   return (
     <>
-      {token && isLogin && <Redirect to="/session" />}
       {user.error && (
       <ErrorMessage message={errorText} />
       )}
@@ -59,8 +55,9 @@ const SignUser = props => {
         <input id="username" type="text" onChange={setCredentialName} />
         <label htmlFor="password">Password</label>
         <input id="password" type="password" onChange={setCredentialPass} />
-        <Link onClick={setUser} to="/">{buttonText}</Link>
+        <button type="submit" onClick={setUser}>{buttonText}</button>
       </form>
+      { token && <Redirect to="/session" />}
     </>
   );
 };

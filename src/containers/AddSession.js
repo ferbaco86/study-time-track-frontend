@@ -1,7 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import {
   setSessionTitle,
 } from '../actions/index';
@@ -13,8 +13,9 @@ import LogOut from './LogOut';
 
 const AddSession = () => {
   const token = localStorage.getItem('token');
-  const { session } = useSelector(state => state);
+  const { user } = useSelector(state => state);
   const dispatch = useDispatch();
+
   const setTitle = e => {
     const input = e.target.value;
     dispatch(setSessionTitle(input));
@@ -24,13 +25,14 @@ const AddSession = () => {
     dispatch(autoLogin());
   }, []);
 
-  const setSession = () => {
+  const setSession = e => {
+    e.preventDefault();
     dispatch(setSessionData());
   };
 
   const shouldComponentRender = () => {
     let isPending = false;
-    if (session.pending === false || session.error !== null) {
+    if (user.pending === false || user.error !== null) {
       isPending = false;
     } else {
       isPending = true;
@@ -39,17 +41,17 @@ const AddSession = () => {
   };
 
   if (shouldComponentRender()) return <LoaderSpinner />;
-  const errorText = `Error: ${session.error}`;
+  const errorText = `Error: ${user.error}`;
   return (
     <>
-      {session.error && (
+      {user.error && (
       <ErrorMessage message={errorText} />
       )}
       {!token && <Redirect to="/" />}
       <form>
         <label htmlFor="title">Title</label>
         <input onChange={setTitle} id="title" type="text" placeholder="Session Title" />
-        <Link onClick={setSession} type="button" to="/sessionDetail">Add</Link>
+        <button type="submit" onClick={setSession}>Add</button>
       </form>
       <LogOut />
     </>
