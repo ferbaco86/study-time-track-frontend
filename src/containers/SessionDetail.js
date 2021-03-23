@@ -1,10 +1,13 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import {
+  fetchSessionID,
   setSubjectName,
   setSubjectTime,
+  setSessionRedirect,
 } from '../actions/index';
 import autoLogin from '../api/autoLogin';
 import { setSubjectData } from '../api/setData';
@@ -12,15 +15,20 @@ import { fetchSessionData } from '../api/fetchData';
 import ErrorMessage from '../components/ErrorMessage';
 import LoaderSpinner from '../components/LoaderSpinner';
 import LogOut from './LogOut';
-import store from '../reducers/store';
 
-const SessionDetail = () => {
+const SessionDetail = props => {
+  const { match } = props;
   const token = localStorage.getItem('token');
   const { session, subject } = useSelector(state => state);
   const dispatch = useDispatch();
+
   const setName = e => {
     const input = e.target.value;
     dispatch(setSubjectName(input));
+  };
+
+  const getSessionID = () => {
+    dispatch(fetchSessionID(match.params.id));
   };
 
   const setTime = e => {
@@ -30,8 +38,9 @@ const SessionDetail = () => {
 
   useEffect(() => {
     dispatch(autoLogin());
-    const sessionStore = store.getState().session.session;
-    if (Object.keys(sessionStore).length === 0) dispatch(fetchSessionData());
+    dispatch(setSessionRedirect(false));
+    getSessionID();
+    dispatch(fetchSessionData());
   }, []);
 
   const setSubject = () => {
@@ -72,5 +81,9 @@ const SessionDetail = () => {
     </>
   );
 };
-
+SessionDetail.propTypes = {
+  match: PropTypes.shape(
+    { params: PropTypes.shape({ id: PropTypes.string.isRequired }).isRequired },
+  ).isRequired,
+};
 export default SessionDetail;

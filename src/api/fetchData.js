@@ -30,6 +30,8 @@ export const fetchUserData = () => dispatch => {
 };
 
 export const fetchSessionData = () => dispatch => {
+  let sessionID = 0;
+  if (store.getState().session.id) { sessionID = store.getState().session.id; }
   const token = localStorage.getItem('token');
   const config = {
     mode: 'cors',
@@ -38,9 +40,8 @@ export const fetchSessionData = () => dispatch => {
       Authorization: `Bearer ${token}`,
     },
   };
-  const { id } = store.getState().session.session;
-  console.log(store.getState().session);
-  const apiUrl = `http://localhost:3000/sessions/${id}`;
+
+  const apiUrl = `http://localhost:3000/sessions/${sessionID}`;
   dispatch(setSessionDataPending());
   fetch(apiUrl, config)
     .then(response => response.json())

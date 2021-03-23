@@ -1,8 +1,9 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import {
+  setActiveTab,
   setSessionTitle,
 } from '../actions/index';
 import autoLogin from '../api/autoLogin';
@@ -13,7 +14,7 @@ import LogOut from './LogOut';
 
 const AddSession = () => {
   const token = localStorage.getItem('token');
-  const { user } = useSelector(state => state);
+  const { user, session } = useSelector(state => state);
   const dispatch = useDispatch();
 
   const setTitle = e => {
@@ -23,12 +24,13 @@ const AddSession = () => {
 
   useEffect(() => {
     dispatch(autoLogin());
+    dispatch(setActiveTab('Add Session'));
   }, []);
 
-  const setSession = () => {
+  const setSession = e => {
+    e.preventDefault();
     dispatch(setSessionData());
   };
-
   const shouldComponentRender = () => {
     let isPending = false;
     if (user.pending === false || user.error !== null) {
@@ -41,16 +43,18 @@ const AddSession = () => {
 
   if (shouldComponentRender()) return <LoaderSpinner />;
   const errorText = `Error: ${user.error}`;
+
   return (
     <>
       {user.error && (
       <ErrorMessage message={errorText} />
       )}
       {!token && <Redirect to="/" />}
+      {session.redirect && <Redirect to={`/sessionDetail/${session.session.id}`} />}
       <form>
         <label htmlFor="title">Title</label>
         <input onChange={setTitle} id="title" type="text" placeholder="Session Title" />
-        <Link onClick={setSession} to="/sessionDetail">Add</Link>
+        <button type="submit" onClick={setSession}>Add</button>
       </form>
       <LogOut />
     </>

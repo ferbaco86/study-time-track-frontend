@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { setActiveTab } from '../actions';
 import autoLogin from '../api/autoLogin';
 import { fetchUserData } from '../api/fetchData';
 import AddSession from '../containers/AddSession';
@@ -12,6 +13,7 @@ const UserDetail = () => {
   const dispatch = useDispatch();
   const token = localStorage.getItem('token');
   useEffect(() => {
+    dispatch(setActiveTab('Check Sessions'));
     dispatch(autoLogin());
     dispatch(fetchUserData());
   }, []);
@@ -38,7 +40,7 @@ const UserDetail = () => {
         <h2>{user.user.username}</h2>
         <h1>Sessions</h1>
         { user.user.sessions
-        && user.user.sessions.map(session => <h2 key={session.id}>{session.title}</h2>)}
+        && user.user.sessions.map(session => <Link key={session.id} to={`sessionDetail/${session.id}`}>{session.title}</Link>)}
       </div>
       <AddSession />
       <LogOut />

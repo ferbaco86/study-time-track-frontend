@@ -2,6 +2,7 @@ import {
   setDataPending, setDataSuccess, setDataError,
   setSessionDataPending, setSessionDataSuccess, setSessionDataError,
   setSubjectDataPending, setSubjectDataSuccess, setSubjectDataError, resetCredentials,
+  setSessionRedirect,
 } from '../actions';
 import store from '../reducers/store';
 
@@ -75,6 +76,7 @@ export const setSessionData = () => dispatch => {
         throw (errorMessage);
       }
       dispatch(setSessionDataSuccess(data));
+      dispatch(setSessionRedirect(true));
     })
     .catch(error => {
       dispatch(setSessionDataError(error));
