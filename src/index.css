@@ -36,11 +36,13 @@ dd {
 
 /* Set core body defaults */
 body {
+  margin: 0 auto;
+  width: 30vw;
   height: 100vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
-  font-family: 'Roboto', sans-serif;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   color: var(--text-color);
   background-color: var(--bg-color-lighter);
 }
@@ -80,7 +82,7 @@ body {
 
 :root {
   --text-color: #f0ebeb;
-  --bg-color-lighter: #f3f4f6;
+  --bg-color-lighter: #fff;
 }
 
 @media (max-width: 800px) {

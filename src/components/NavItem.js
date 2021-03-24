@@ -7,7 +7,8 @@ display: flex;
 flex-direction: column;
 align-items: center;
 justify-content: center;
-color: white;`;
+color: white;
+padding: 0.5rem 1rem;`;
 
 const NavItem = props => {
   const { icon, legend, path } = props;

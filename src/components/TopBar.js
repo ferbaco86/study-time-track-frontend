@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 
 const Header = styled.header`
 background-color: #62b5e5;
+padding: 1rem 2rem;
 color: white;
 display: flex;
 justify-content: center;

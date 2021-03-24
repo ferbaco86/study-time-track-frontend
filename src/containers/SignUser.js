@@ -9,17 +9,19 @@ import { setUserData } from '../api/setData';
 import ErrorMessage from '../components/ErrorMessage';
 import LoaderSpinner from '../components/LoaderSpinner';
 import autoLogin from '../api/autoLogin';
+import FormButton from '../components/FormButton';
 
 const InputField = styled.input`
 border: 3px solid white;
 border-radius: 0;
 outline: none;
-background-color: transparent;
+background-color: white;
 margin-bottom: 1.2rem;
 padding: 0.5rem;`;
 
 const SignForm = styled.form`
 display: flex;
+height: 50vh;
 flex-direction: column;
 justify-content: center;
 align-items: center;`;
@@ -69,7 +71,7 @@ const SignUser = props => {
       <SignForm>
         <InputField id="username" type="text" onChange={setCredentialName} placeholder="Username" />
         <InputField id="password" type="password" onChange={setCredentialPass} placeholder="Password" />
-        <button type="submit" onClick={setUser}>{buttonText}</button>
+        <FormButton type="submit" onClick={setUser}>{buttonText}</FormButton>
       </SignForm>
       { token && <Redirect to="/session" />}
     </>

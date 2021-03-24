@@ -5,7 +5,7 @@ const FooterContainer = styled.footer`
 position: fixed;
 bottom: 0;
 height: 10vh;
-width: 100%;
+width: 30vw;
 display: flex;
 justify-content: space-between;
 background-color: #67899c`;
