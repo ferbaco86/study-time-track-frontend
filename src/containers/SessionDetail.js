@@ -1,6 +1,7 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link, Redirect } from 'react-router-dom';
 import {
@@ -14,6 +15,37 @@ import { setSubjectData } from '../api/setData';
 import { fetchSessionData } from '../api/fetchData';
 import ErrorMessage from '../components/ErrorMessage';
 import LoaderSpinner from '../components/LoaderSpinner';
+
+const SessionName = styled.h1`
+width: 100%;
+background-color: white;
+text-align: center;`;
+
+const InputField = styled.input`
+border: none;
+border-bottom: 3px solid #8ed3f1;
+border-radius: 0;
+width: 100%;
+outline: none;
+background-color: white;
+margin-bottom: 1.2rem;
+padding: 0.5rem;`;
+
+const SubjectForm = styled.form`
+display: flex;
+margin-top: 2rem;
+background-color: white;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+padding: 1rem;`;
+
+const AddLink = styled(Link)`
+padding: 0.8rem 3rem;
+background-color: #addc91;
+color: white;
+border: none;
+text-decoration: none;`;
 
 const SessionDetail = props => {
   const { match } = props;
@@ -64,18 +96,15 @@ const SessionDetail = props => {
       <ErrorMessage message={errorText} />
       )}
       {!token && <Redirect to="/" />}
-      <h1>{session.session.title}</h1>
-      <h2>Subjects</h2>
+      <SessionName>{session.session.title}</SessionName>
       {session.session.subjects
       && session.session.subjects.map(subject => <h3 key={subject.id}>{subject.name}</h3>)}
       {subject.subject && subject.subject.map(subject => <h3 key={subject.id}>{subject.name}</h3>)}
-      <form>
-        <label htmlFor="title">Subject Title</label>
-        <input onChange={setName} id="title" type="text" placeholder="Subject Title" />
-        <label htmlFor="time">Subject Time Studied</label>
-        <input onChange={setTime} id="time" type="text" placeholder="Time spent studying" />
-        <Link onClick={setSubject} type="button" to={`/sessionDetail/${session.id}`}>Add</Link>
-      </form>
+      <SubjectForm>
+        <InputField onChange={setName} id="title" type="text" placeholder="What subject did you study?..." />
+        <InputField onChange={setTime} id="time" type="number" step="0.1" min="0" placeholder="How long(in hours) did you spend studying?..." />
+        <AddLink onClick={setSubject} type="button" to={`/sessionDetail/${session.id}`}>Add</AddLink>
+      </SubjectForm>
     </>
   );
 };
