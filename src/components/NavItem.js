@@ -8,13 +8,17 @@ flex-direction: column;
 align-items: center;
 justify-content: center;
 color: white;
-padding: 0.5rem 1rem;`;
+padding: 0.5rem 1rem;
+text-decoration: none;`;
+
+const Icon = styled.i`
+padding: 0.5rem;`;
 
 const NavItem = props => {
   const { icon, legend, path } = props;
   return (
     <ContainerLink to={path}>
-      <i className={icon} />
+      <Icon className={icon} />
       <small>{legend}</small>
     </ContainerLink>
   );

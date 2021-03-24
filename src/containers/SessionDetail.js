@@ -14,7 +14,6 @@ import { setSubjectData } from '../api/setData';
 import { fetchSessionData } from '../api/fetchData';
 import ErrorMessage from '../components/ErrorMessage';
 import LoaderSpinner from '../components/LoaderSpinner';
-import LogOut from './LogOut';
 
 const SessionDetail = props => {
   const { match } = props;
@@ -77,7 +76,6 @@ const SessionDetail = props => {
         <input onChange={setTime} id="time" type="text" placeholder="Time spent studying" />
         <Link onClick={setSubject} type="button" to={`/sessionDetail/${session.id}`}>Add</Link>
       </form>
-      <LogOut />
     </>
   );
 };

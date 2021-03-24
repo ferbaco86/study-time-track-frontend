@@ -4,7 +4,6 @@ const FormButton = styled.button`
 padding: 0.8rem 3rem;
 background-color: #addc91;
 color: white;
-border: none;
-border-radius: 4px`;
+border: none;`;
 
 export default FormButton;

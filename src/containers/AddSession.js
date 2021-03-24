@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
+import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import {
@@ -11,7 +12,17 @@ import autoLogin from '../api/autoLogin';
 import { setSessionData } from '../api/setData';
 import ErrorMessage from '../components/ErrorMessage';
 import LoaderSpinner from '../components/LoaderSpinner';
-import LogOut from './LogOut';
+import FormButton from '../components/FormButton';
+
+const TitleInput = styled.input`
+width: 100%;
+border-radius: 0;
+border: none;
+outline: none;
+padding: 1rem 2rem;`;
+
+const TitleForm = styled.form`
+display: flex`;
 
 const AddSession = () => {
   const token = localStorage.getItem('token');
@@ -53,12 +64,10 @@ const AddSession = () => {
       )}
       {!token && <Redirect to="/" />}
       {session.redirect && <Redirect to={`/sessionDetail/${session.session.id}`} />}
-      <form>
-        <label htmlFor="title">Title</label>
-        <input onChange={setTitle} id="title" type="text" placeholder="Session Title" />
-        <button type="submit" onClick={setSession}>Add</button>
-      </form>
-      <LogOut />
+      <TitleForm>
+        <TitleInput onChange={setTitle} id="title" type="text" placeholder="Please add your session title here..." />
+        <FormButton type="submit" onClick={setSession}>Add</FormButton>
+      </TitleForm>
     </>
   );
 };

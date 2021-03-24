@@ -3,7 +3,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { setCredentialUsername, setCredentialPassword, setActiveTab } from '../actions/index';
 import { setUserData } from '../api/setData';
 import ErrorMessage from '../components/ErrorMessage';
@@ -25,6 +25,13 @@ height: 50vh;
 flex-direction: column;
 justify-content: center;
 align-items: center;`;
+
+const SignUpMessage = styled.p`
+margin-top: 2rem;`;
+
+const SignUpLink = styled(Link)`
+text-decoration: none;
+color: #62b5e5;`;
 
 const SignUser = props => {
   const token = localStorage.getItem('token');
@@ -72,7 +79,14 @@ const SignUser = props => {
         <InputField id="username" type="text" onChange={setCredentialName} placeholder="Username" />
         <InputField id="password" type="password" onChange={setCredentialPass} placeholder="Password" />
         <FormButton type="submit" onClick={setUser}>{buttonText}</FormButton>
+        {buttonText === 'Log In' && (
+        <SignUpMessage>
+          If you need an account. Click here
+          <SignUpLink to="/signup"> Sign Up </SignUpLink>
+        </SignUpMessage>
+        ) }
       </SignForm>
+
       { token && <Redirect to="/session" />}
     </>
   );

@@ -5,7 +5,6 @@ import { resetSubjectData, setActiveTab } from '../actions';
 import autoLogin from '../api/autoLogin';
 import { fetchUserData } from '../api/fetchData';
 import AddSession from '../containers/AddSession';
-import LogOut from '../containers/LogOut';
 import ErrorMessage from './ErrorMessage';
 import LoaderSpinner from './LoaderSpinner';
 
@@ -49,7 +48,6 @@ const UserDetail = () => {
         && user.user.sessions.map(session => <Link key={session.id} onClick={resetSubjectStore} to={`sessionDetail/${session.id}`}>{session.title}</Link>)}
       </div>
       <AddSession />
-      <LogOut />
     </>
   );
 };
