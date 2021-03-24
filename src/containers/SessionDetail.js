@@ -15,6 +15,7 @@ import { setSubjectData } from '../api/setData';
 import { fetchSessionData } from '../api/fetchData';
 import ErrorMessage from '../components/ErrorMessage';
 import LoaderSpinner from '../components/LoaderSpinner';
+import Card from '../components/Card';
 
 const SessionName = styled.h1`
 width: 100%;
@@ -46,6 +47,12 @@ background-color: #addc91;
 color: white;
 border: none;
 text-decoration: none;`;
+
+const SubjectsContainer = styled.div`
+display: flex;
+justify-content: space-between;
+flex-wrap: wrap;
+background-color: #f3f4f6`;
 
 const SessionDetail = props => {
   const { match } = props;
@@ -97,14 +104,28 @@ const SessionDetail = props => {
       )}
       {!token && <Redirect to="/" />}
       <SessionName>{session.session.title}</SessionName>
-      {session.session.subjects
-      && session.session.subjects.map(subject => <h3 key={subject.id}>{subject.name}</h3>)}
-      {subject.subject && subject.subject.map(subject => <h3 key={subject.id}>{subject.name}</h3>)}
       <SubjectForm>
         <InputField onChange={setName} id="title" type="text" placeholder="What subject did you study?..." />
         <InputField onChange={setTime} id="time" type="number" step="0.1" min="0" placeholder="How long(in hours) did you spend studying?..." />
         <AddLink onClick={setSubject} type="button" to={`/sessionDetail/${session.id}`}>Add</AddLink>
       </SubjectForm>
+      <SubjectsContainer>
+        {session.session.subjects
+      && session.session.subjects.map(subject => (
+        <Card
+          key={subject.id}
+          title={subject.name}
+          time={subject.time}
+        />
+      ))}
+        {subject.subject && subject.subject.map(subject => (
+          <Card
+            key={subject.id}
+            title={subject.name}
+            time={subject.time}
+          />
+        ))}
+      </SubjectsContainer>
     </>
   );
 };

@@ -37,7 +37,7 @@ dd {
 /* Set core body defaults */
 body {
   width: 100%;
-  height: 100vh;
+  margin-bottom: 15vh;
   scroll-behavior: smooth;
   text-rendering: optimizeSpeed;
   line-height: 1.5;
@@ -81,7 +81,7 @@ body {
 
 :root {
   --text-color: #67899c;
-  --bg-color-lighter: #fff;
+  --bg-color-lighter: #f3f4f6;
 }
 
 @media (max-width: 800px) {
