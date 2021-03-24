@@ -33,7 +33,7 @@ const subjectDataReducer = (state = initialState, action) => {
       return {
         ...state,
         pending: false,
-        subject: {},
+        subject: [],
       };
     default:
       return state;

@@ -75,7 +75,7 @@ const SessionDetail = props => {
         <input onChange={setName} id="title" type="text" placeholder="Subject Title" />
         <label htmlFor="time">Subject Time Studied</label>
         <input onChange={setTime} id="time" type="text" placeholder="Time spent studying" />
-        <Link onClick={setSubject} type="button" to="/sessionDetail">Add</Link>
+        <Link onClick={setSubject} type="button" to={`/sessionDetail/${session.id}`}>Add</Link>
       </form>
       <LogOut />
     </>

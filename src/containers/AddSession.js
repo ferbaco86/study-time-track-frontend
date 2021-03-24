@@ -3,6 +3,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import {
+  resetSubjectData,
   setActiveTab,
   setSessionTitle,
 } from '../actions/index';
@@ -30,6 +31,7 @@ const AddSession = () => {
   const setSession = e => {
     e.preventDefault();
     dispatch(setSessionData());
+    dispatch(resetSubjectData());
   };
   const shouldComponentRender = () => {
     let isPending = false;
