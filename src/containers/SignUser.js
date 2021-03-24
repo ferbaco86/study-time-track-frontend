@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
+import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Redirect } from 'react-router-dom';
@@ -8,6 +9,20 @@ import { setUserData } from '../api/setData';
 import ErrorMessage from '../components/ErrorMessage';
 import LoaderSpinner from '../components/LoaderSpinner';
 import autoLogin from '../api/autoLogin';
+
+const InputField = styled.input`
+border: 3px solid white;
+border-radius: 0;
+outline: none;
+background-color: transparent;
+margin-bottom: 1.2rem;
+padding: 0.5rem;`;
+
+const SignForm = styled.form`
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;`;
 
 const SignUser = props => {
   const token = localStorage.getItem('token');
@@ -51,13 +66,11 @@ const SignUser = props => {
       {user.error && (
       <ErrorMessage message={errorText} />
       )}
-      <form>
-        <label htmlFor="username">Username</label>
-        <input id="username" type="text" onChange={setCredentialName} />
-        <label htmlFor="password">Password</label>
-        <input id="password" type="password" onChange={setCredentialPass} />
+      <SignForm>
+        <InputField id="username" type="text" onChange={setCredentialName} placeholder="Username" />
+        <InputField id="password" type="password" onChange={setCredentialPass} placeholder="Password" />
         <button type="submit" onClick={setUser}>{buttonText}</button>
-      </form>
+      </SignForm>
       { token && <Redirect to="/session" />}
     </>
   );
