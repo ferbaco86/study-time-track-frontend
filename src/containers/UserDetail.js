@@ -8,30 +8,12 @@ import AddSession from './AddSession';
 import ErrorMessage from '../components/ErrorMessage';
 import LoaderSpinner from '../components/LoaderSpinner';
 import TitleName from '../components/TitleName';
+import SessionCard from '../components/SessionCard';
 
 const UserDetail = () => {
   const dispatch = useDispatch();
-  // const [subjects, setSubjects] = useState([]);
   const token = localStorage.getItem('token');
   const { user } = useSelector(state => state);
-
-  useEffect(() => {
-    const token = localStorage.getItem('token');
-    const config = {
-      mode: 'cors',
-      method: 'GET',
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-    };
-    if (user.user.sessions) {
-      user.user.sessions.forEach(element => {
-        fetch(`http://localhost:3000/total_time/${element.id}`, config)
-          .then(res => res.json())
-          .then(data => console.log(data));
-      });
-    }
-  }, []);
 
   useEffect(() => {
     dispatch(setActiveTab('Check Sessions'));
@@ -62,9 +44,12 @@ const UserDetail = () => {
         )}
         {!token && <Redirect to="/" />}
         <TitleName>{user.user.username}</TitleName>
-        <h1>Sessions</h1>
         { user.user.sessions
-        && user.user.sessions.map(session => <Link key={session.id} onClick={resetSubjectStore} to={`sessionDetail/${session.id}`}>{session.title}</Link>)}
+        && user.user.sessions.map(session => (
+          <Link key={session.id} onClick={resetSubjectStore} to={`sessionDetail/${session.id}`}>
+            <SessionCard date={session.created_at} title={session.title} />
+          </Link>
+        ))}
       </div>
       <AddSession />
     </>
