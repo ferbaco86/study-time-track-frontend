@@ -16,11 +16,8 @@ import { fetchSessionData } from '../api/fetchData';
 import ErrorMessage from '../components/ErrorMessage';
 import LoaderSpinner from '../components/LoaderSpinner';
 import Card from '../components/Card';
-
-const SessionName = styled.h1`
-width: 100%;
-background-color: white;
-text-align: center;`;
+import TitleName from '../components/TitleName';
+import DateSubtitle from '../components/DateSubtitle';
 
 const InputField = styled.input`
 border: none;
@@ -50,6 +47,7 @@ text-decoration: none;`;
 
 const SubjectsContainer = styled.div`
 display: flex;
+flex-direction: column;
 justify-content: space-between;
 flex-wrap: wrap;
 background-color: #f3f4f6`;
@@ -103,7 +101,8 @@ const SessionDetail = props => {
       <ErrorMessage message={errorText} />
       )}
       {!token && <Redirect to="/" />}
-      <SessionName>{session.session.title}</SessionName>
+      <TitleName>{session.session.title}</TitleName>
+      <DateSubtitle>{new Date(session.session.created_at).toLocaleDateString()}</DateSubtitle>
       <SubjectForm>
         <InputField onChange={setName} id="title" type="text" placeholder="What subject did you study?..." />
         <InputField onChange={setTime} id="time" type="number" step="0.1" min="0" placeholder="How long(in hours) did you spend studying?..." />

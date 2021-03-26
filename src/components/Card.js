@@ -3,13 +3,12 @@ import PropTypes from 'prop-types';
 
 const CardContainer = styled.div`
 display: flex;
-width: 10vw;
-flex-direction: column;
-justify-content: center;
+width: 100%;
+justify-content: space-between;
 align-items: center;
 background-color: white;
 padding: 1rem;
-margin: 1.2rem`;
+margin: 0.1rem 0`;
 
 const TitleName = styled.h4`
 color: #8090a0;
