@@ -19,15 +19,27 @@ font-weight: bold;
 font-size: 2.5rem;
 margin-right: 0.4rem`;
 
+const DateText = styled.h2`
+font-weight: bold;
+font-size: 2rem;`;
+
 const TimeContainer = styled.div`
 display: flex;
 align-items: center;`;
 
-const Card = props => {
-  const { title, time } = props;
+const InfoContainer = styled.div`
+display: flex;
+align-items: center;
+flex-direction: column;`;
+
+const ProgressCard = props => {
+  const { date, name, time } = props;
   return (
     <CardContainer>
-      <TitleName>{title}</TitleName>
+      <InfoContainer>
+        <DateText>{date}</DateText>
+        <TitleName>{name}</TitleName>
+      </InfoContainer>
       <TimeContainer>
         <TimeText>{time}</TimeText>
         <span>hr(s)</span>
@@ -35,9 +47,11 @@ const Card = props => {
     </CardContainer>
   );
 };
-Card.propTypes = {
-  title: PropTypes.string.isRequired,
+
+ProgressCard.propTypes = {
+  date: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
   time: PropTypes.string.isRequired,
 };
 
-export default Card;
+export default ProgressCard;

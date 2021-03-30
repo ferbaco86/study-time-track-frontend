@@ -8,11 +8,12 @@ justify-content: space-between;
 align-items: center;
 background-color: white;
 padding: 1rem;
-margin: 0.1rem 0`;
+margin: 0.1rem 0;
+`;
 
 const SessionDate = styled.h4`
 color: #8090a0;
-font-weight: 300`;
+font-weight: 300;`;
 
 const TimeText = styled.h2`
 font-weight: bold;

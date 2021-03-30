@@ -6,6 +6,7 @@ import UserDetail from '../containers/UserDetail';
 import SessionDetail from '../containers/SessionDetail';
 import NavFooter from './NavFooter';
 import TopBar from './TopBar';
+import Progress from '../containers/Progress';
 
 const Routes = () => (
   <>
@@ -17,6 +18,7 @@ const Routes = () => (
         <Route exact path="/checkSessions" component={UserDetail} />
         <Route exact path="/session" component={AddSession} />
         <Route exact path="/sessionDetail/:id" component={SessionDetail} />
+        <Route exact path="/progress" component={Progress} />
       </Switch>
       <NavFooter />
     </BrowserRouter>

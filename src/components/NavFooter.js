@@ -15,7 +15,7 @@ const NavFooter = () => (
   <FooterContainer>
     <NavItem icon="fas fa-plus" legend="Add Session" path="/session" />
     <NavItem icon="fas fa-book-open" legend="Check Sessions" path="/checkSessions" />
-    <NavItem icon="fas fa-chart-line" legend="Your Progress" path="/" />
+    <NavItem icon="fas fa-chart-line" legend="Your Progress" path="/progress" />
     <LogOut />
   </FooterContainer>
 );
