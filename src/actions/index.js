@@ -5,7 +5,9 @@ import {
   SET_SESSIONDATA_PENDING, SET_SESSIONDATA_SUCCESS, SET_SESSIONDATA_ERROR, RESET_SESSIONDATA,
   SET_SESSION_TITLE, SET_SUBJECTDATA_PENDING, SET_SUBJECTDATA_SUCCESS, SET_SUBJECTDATA_ERROR,
   RESET_SUBJECTDATA, SET_SUBJECT_NAME, SET_SUBJECT_TIME, SET_ACTIVE_TAB, FETCH_SESSION_ID,
-  SET_SESSION_REDIRECT,
+  SET_SESSION_REDIRECT, FETCH_PROGRESS_PENDING, FETCH_LATEST_PROGRESS_SUCCESS,
+  FETCH_LONGEST_PROGRESS_SUCCESS, FETCH_TOP5_PROGRESS_SUCCESS,
+  FETCH_PROGRESS_ERROR,
 } from './constants';
 
 export const setCredentialUsername = username => ({
@@ -118,4 +120,28 @@ export const setActiveTab = tab => ({
 export const fetchSessionID = id => ({
   type: FETCH_SESSION_ID,
   id,
+});
+
+export const fetchProgressPending = () => ({
+  type: FETCH_PROGRESS_PENDING,
+});
+
+export const fetchLatestProgressSuccess = latest => ({
+  type: FETCH_LATEST_PROGRESS_SUCCESS,
+  latest,
+});
+
+export const fetchLongestProgressSuccess = longest => ({
+  type: FETCH_LONGEST_PROGRESS_SUCCESS,
+  longest,
+});
+
+export const fetchTop5ProgressSuccess = top => ({
+  type: FETCH_TOP5_PROGRESS_SUCCESS,
+  top,
+});
+
+export const fetchProgressError = error => ({
+  type: FETCH_PROGRESS_ERROR,
+  error,
 });

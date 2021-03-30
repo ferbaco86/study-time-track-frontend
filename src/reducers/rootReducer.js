@@ -2,6 +2,7 @@ import { combineReducers } from 'redux';
 import activeTabReducer from './activeTab';
 import setCredentialsReducer from './credentials';
 import dataReducer from './data';
+import progressReducer from './progress';
 import sessionDataReducer from './sessionData';
 import setSessionTitleReducer from './sessionParams';
 import subjectDataReducer from './subjectData';
@@ -17,6 +18,7 @@ const rootReducer = combineReducers({
   subjectParams: setSubjectParamsReducer,
   subject: subjectDataReducer,
   tab: activeTabReducer,
+  progress: progressReducer,
 });
 
 export default rootReducer;
