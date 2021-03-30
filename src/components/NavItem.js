@@ -14,12 +14,15 @@ text-decoration: none;`;
 const Icon = styled.i`
 padding: 0.5rem;`;
 
+const Legend = styled.small`
+text-align: center;`;
+
 const NavItem = props => {
   const { icon, legend, path } = props;
   return (
     <ContainerLink to={path}>
       <Icon className={icon} />
-      <small>{legend}</small>
+      <Legend>{legend}</Legend>
     </ContainerLink>
   );
 };
