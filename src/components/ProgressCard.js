@@ -51,7 +51,7 @@ const ProgressCard = props => {
 ProgressCard.propTypes = {
   date: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
-  time: PropTypes.string.isRequired,
+  time: PropTypes.number.isRequired,
 };
 
 export default ProgressCard;

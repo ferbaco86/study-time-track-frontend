@@ -10,6 +10,7 @@ const autoLogin = () => dispatch => {
     })
       .then(resp => resp.json())
       .then(data => {
+        console.log(data);
         dispatch(setDataSuccess(data));
       });
   }

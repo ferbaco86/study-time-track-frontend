@@ -1,6 +1,8 @@
 import {
   fetchUserDataPending, fetchUserDataSuccess, fetchUserDataError,
   setSessionDataSuccess, setSessionDataPending, setSessionDataError,
+  fetchProgressPending, fetchProgressError,
+  fetchLongestProgressSuccess,
 } from '../actions/index';
 import store from '../reducers/store';
 
@@ -53,5 +55,30 @@ export const fetchSessionData = () => dispatch => {
     })
     .catch(error => {
       dispatch(setSessionDataError(error));
+    });
+};
+
+export const fetchLongestSession = userID => dispatch => {
+  const token = localStorage.getItem('token');
+  const config = {
+    mode: 'cors',
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const apiUrl = `http://localhost:3000/longest/${userID}`;
+  dispatch(fetchProgressPending());
+  fetch(apiUrl, config)
+    .then(response => response.json())
+    .then(response => {
+      dispatch(fetchLongestProgressSuccess(response));
+      if (response.code !== 200) {
+        throw (response.status);
+      }
+    })
+    .catch(error => {
+      dispatch(fetchProgressError(error));
     });
 };
