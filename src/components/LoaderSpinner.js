@@ -21,8 +21,8 @@ const Spinner = styled.div`
     height: 64px;
     margin: 8px;
     border-radius: 50%;
-    border: 6px solid #ec1d24;
-    border-color: #f78f3f transparent #ec1d24 transparent;
+    border: 6px solid #313944;
+    border-color: #67899c transparent #313944 transparent;
     animation: ${ringAnimation} 1.2s linear infinite;
   }`;
 const LoaderSpinner = () => (

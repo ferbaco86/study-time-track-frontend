@@ -4,12 +4,12 @@ import styled from 'styled-components';
 
 const ErrorContainer = styled.div`
 display: flex;
-margin: 0 auto;`;
+justify-content: center;
+margin: 1rem;`;
 
 const ErrorText = styled.span`
 color: ${props => props.textColor};
-font-size: 2rem;
-font-family: 'Roboto Condensed', sans-serif;
+font-size: 1.1rem;
 font-weight: 700;`;
 
 const ErrorMessage = props => {
