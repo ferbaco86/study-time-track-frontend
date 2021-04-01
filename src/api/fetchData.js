@@ -16,7 +16,7 @@ export const fetchUserData = () => dispatch => {
     },
   };
   const { id } = store.getState().user.user;
-  const apiUrl = `https://fbc-study-track-api/users/${id}`;
+  const apiUrl = `https://fbc-study-track-api.herokuapp.com/users/${id}`;
   // const apiUrl = `http://localhost:3000/users/${id}`;
 
   dispatch(fetchUserDataPending());
@@ -45,7 +45,7 @@ export const fetchSessionData = () => dispatch => {
     },
   };
 
-  const apiUrl = `https://fbc-study-track-api/sessions/${sessionID}`;
+  const apiUrl = `https://fbc-study-track-api.herokuapp.com/sessions/${sessionID}`;
   // const apiUrl = `http://localhost:3000/sessions/${sessionID}`;
 
   dispatch(setSessionDataPending());
@@ -72,7 +72,7 @@ export const fetchLongestSession = userID => dispatch => {
     },
   };
 
-  const apiUrl = `https://fbc-study-track-api/longest/${userID}`;
+  const apiUrl = `https://fbc-study-track-api.herokuapp.com/longest/${userID}`;
   // const apiUrl = `http://localhost:3000/longest/${userID}`;
   dispatch(fetchProgressPending());
   fetch(apiUrl, config)
@@ -98,7 +98,7 @@ export const fetchLatestSession = userID => dispatch => {
     },
   };
 
-  const apiUrl = `https://fbc-study-track-api/latest/${userID}`;
+  const apiUrl = `https://fbc-study-track-api.herokuapp.com/latest/${userID}`;
   // const apiUrl = `http://localhost:3000/latest/${userID}`;
   dispatch(fetchProgressPending());
   fetch(apiUrl, config)
@@ -124,7 +124,7 @@ export const fetchTop5Subjects = userID => dispatch => {
     },
   };
 
-  const apiUrl = `https://fbc-study-track-api/top/${userID}`;
+  const apiUrl = `https://fbc-study-track-api.herokuapp.com/top/${userID}`;
   // const apiUrl = `http://localhost:3000/top/${userID}`;
   dispatch(fetchProgressPending());
   fetch(apiUrl, config)

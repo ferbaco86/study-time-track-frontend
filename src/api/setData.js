@@ -11,11 +11,11 @@ export const setUserData = signAction => dispatch => {
   let apiUrl = '';
   switch (signAction) {
     case 'sign up':
-      apiUrl = 'https://fbc-study-track-api/users';
+      apiUrl = 'https://fbc-study-track-api.herokuapp.com/users';
       // apiUrl = 'http://localhost:3000/users';
       break;
     case 'log in':
-      apiUrl = 'https://fbc-study-track-api/login';
+      apiUrl = 'https://fbc-study-track-api.herokuapp.com/login';
       // apiUrl = 'http://localhost:3000/login';
       break;
     default:
@@ -56,7 +56,7 @@ export const setSessionData = () => dispatch => {
   const { title } = store.getState().sessionTitle;
   const token = localStorage.getItem('token');
 
-  const apiUrl = 'https://fbc-study-track-api/sessions';
+  const apiUrl = 'https://fbc-study-track-api.herokuapp.com/sessions';
   // const apiUrl = 'http://localhost:3000/sessions';
   const config = {
     mode: 'cors',
@@ -91,7 +91,7 @@ export const setSubjectData = () => dispatch => {
 
   const { id } = store.getState().session.session;
   const { name, time } = store.getState().subjectParams;
-  const apiUrl = 'https://fbc-study-track-api/subjects';
+  const apiUrl = 'https://fbc-study-track-api.herokuapp.com/subjects';
   // const apiUrl = 'http://localhost:3000/subjects';
   const config = {
     mode: 'cors',
