@@ -16,7 +16,9 @@ export const fetchUserData = () => dispatch => {
     },
   };
   const { id } = store.getState().user.user;
-  const apiUrl = `http://localhost:3000/users/${id}`;
+  const apiUrl = `https://fbc-study-track-api/users/${id}`;
+  // const apiUrl = `http://localhost:3000/users/${id}`;
+
   dispatch(fetchUserDataPending());
   fetch(apiUrl, config)
     .then(response => response.json())
@@ -43,7 +45,9 @@ export const fetchSessionData = () => dispatch => {
     },
   };
 
-  const apiUrl = `http://localhost:3000/sessions/${sessionID}`;
+  const apiUrl = `https://fbc-study-track-api/sessions/${sessionID}`;
+  // const apiUrl = `http://localhost:3000/sessions/${sessionID}`;
+
   dispatch(setSessionDataPending());
   fetch(apiUrl, config)
     .then(response => response.json())
@@ -68,7 +72,8 @@ export const fetchLongestSession = userID => dispatch => {
     },
   };
 
-  const apiUrl = `http://localhost:3000/longest/${userID}`;
+  const apiUrl = `https://fbc-study-track-api/longest/${userID}`;
+  // const apiUrl = `http://localhost:3000/longest/${userID}`;
   dispatch(fetchProgressPending());
   fetch(apiUrl, config)
     .then(response => response.json())
@@ -93,7 +98,8 @@ export const fetchLatestSession = userID => dispatch => {
     },
   };
 
-  const apiUrl = `http://localhost:3000/latest/${userID}`;
+  const apiUrl = `https://fbc-study-track-api/latest/${userID}`;
+  // const apiUrl = `http://localhost:3000/latest/${userID}`;
   dispatch(fetchProgressPending());
   fetch(apiUrl, config)
     .then(response => response.json())
@@ -118,7 +124,8 @@ export const fetchTop5Subjects = userID => dispatch => {
     },
   };
 
-  const apiUrl = `http://localhost:3000/top/${userID}`;
+  const apiUrl = `https://fbc-study-track-api/top/${userID}`;
+  // const apiUrl = `http://localhost:3000/top/${userID}`;
   dispatch(fetchProgressPending());
   fetch(apiUrl, config)
     .then(response => response.json())

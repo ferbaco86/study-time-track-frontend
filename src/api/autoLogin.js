@@ -2,15 +2,16 @@ import { setDataSuccess } from '../actions';
 
 const autoLogin = () => dispatch => {
   const token = localStorage.getItem('token');
+  const url = 'https://fbc-study-track-api/auto_login';
+  // const url = 'http://localhost:3000/auto_login';
   if (token) {
-    fetch('http://localhost:3000/auto_login', {
+    fetch(url, {
       headers: {
         Authorization: `Bearer ${token}`,
       },
     })
       .then(resp => resp.json())
       .then(data => {
-        console.log(data);
         dispatch(setDataSuccess(data));
       });
   }
