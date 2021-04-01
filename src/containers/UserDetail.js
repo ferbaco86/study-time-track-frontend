@@ -5,7 +5,6 @@ import { Link, Redirect } from 'react-router-dom';
 import { resetSubjectData, setActiveTab } from '../actions';
 import autoLogin from '../api/autoLogin';
 import { fetchUserData } from '../api/fetchData';
-import AddSession from './AddSession';
 import ErrorMessage from '../components/ErrorMessage';
 import LoaderSpinner from '../components/LoaderSpinner';
 import TitleName from '../components/TitleName';
@@ -59,7 +58,6 @@ const UserDetail = () => {
           </StyledLink>
         ))}
       </div>
-      <AddSession />
     </>
   );
 };

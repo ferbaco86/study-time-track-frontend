@@ -67,7 +67,7 @@ const AddSession = () => {
       {!token && <Redirect to="/" />}
       {session.redirect && <Redirect to={`/sessionDetail/${session.session.id}`} />}
       <TitleForm>
-        <TitleInput onChange={setTitle} id="title" type="text" placeholder="Please add your session title here..." />
+        <TitleInput onChange={setTitle} id="title" type="text" placeholder="Session title here..." />
         <FormButton type="submit" onClick={setSession}>Add</FormButton>
       </TitleForm>
     </>

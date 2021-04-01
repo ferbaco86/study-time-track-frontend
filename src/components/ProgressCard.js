@@ -16,12 +16,12 @@ font-weight: 300`;
 
 const TimeText = styled.h2`
 font-weight: bold;
-font-size: 2.5rem;
+font-size: 2rem;
 margin-right: 0.4rem`;
 
 const DateText = styled.h2`
 font-weight: bold;
-font-size: 2rem;`;
+font-size: 1.6rem;`;
 
 const TimeContainer = styled.div`
 display: flex;
