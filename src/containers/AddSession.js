@@ -6,6 +6,7 @@ import { Redirect } from 'react-router-dom';
 import {
   resetSubjectData,
   setActiveTab,
+  setDataError,
   setSessionTitle,
 } from '../actions/index';
 import autoLogin from '../api/autoLogin';
@@ -35,6 +36,7 @@ const AddSession = () => {
   };
 
   useEffect(() => {
+    if (token) { dispatch(setDataError(null)); }
     dispatch(autoLogin());
     dispatch(setActiveTab('Add Session'));
   }, []);

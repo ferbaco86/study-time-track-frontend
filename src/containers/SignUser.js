@@ -4,7 +4,9 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
-import { setCredentialUsername, setCredentialPassword, setActiveTab } from '../actions/index';
+import {
+  setCredentialUsername, setCredentialPassword, setActiveTab,
+} from '../actions/index';
 import { setUserData } from '../api/setData';
 import ErrorMessage from '../components/ErrorMessage';
 import LoaderSpinner from '../components/LoaderSpinner';
@@ -44,6 +46,11 @@ const SignUser = props => {
     dispatch(setCredentialUsername(input));
   };
 
+  const setCredentialPass = e => {
+    const input = e.target.value;
+    dispatch(setCredentialPassword(input));
+  };
+
   const setUser = e => {
     e.preventDefault();
     const signAction = e.target.textContent.toLowerCase();
@@ -55,10 +62,6 @@ const SignUser = props => {
     dispatch(setActiveTab(buttonText));
   }, []);
 
-  const setCredentialPass = e => {
-    const input = e.target.value;
-    dispatch(setCredentialPassword(input));
-  };
   const shouldComponentRender = () => {
     let isPending = false;
     if (user.pending === false || user.error !== null) {
