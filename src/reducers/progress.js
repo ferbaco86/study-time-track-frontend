@@ -7,7 +7,7 @@ const initialState = {
   pending: false,
   latest: {},
   longest: {},
-  top: {},
+  top: [],
   error: null,
 };
 

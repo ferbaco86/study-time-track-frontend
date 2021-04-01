@@ -2,7 +2,7 @@ import {
   fetchUserDataPending, fetchUserDataSuccess, fetchUserDataError,
   setSessionDataSuccess, setSessionDataPending, setSessionDataError,
   fetchProgressPending, fetchProgressError,
-  fetchLongestProgressSuccess,
+  fetchLongestProgressSuccess, fetchLatestProgressSuccess, fetchTop5ProgressSuccess,
 } from '../actions/index';
 import store from '../reducers/store';
 
@@ -74,6 +74,56 @@ export const fetchLongestSession = userID => dispatch => {
     .then(response => response.json())
     .then(response => {
       dispatch(fetchLongestProgressSuccess(response));
+      if (response.code !== 200) {
+        throw (response.status);
+      }
+    })
+    .catch(error => {
+      dispatch(fetchProgressError(error));
+    });
+};
+
+export const fetchLatestSession = userID => dispatch => {
+  const token = localStorage.getItem('token');
+  const config = {
+    mode: 'cors',
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const apiUrl = `http://localhost:3000/latest/${userID}`;
+  dispatch(fetchProgressPending());
+  fetch(apiUrl, config)
+    .then(response => response.json())
+    .then(response => {
+      dispatch(fetchLatestProgressSuccess(response));
+      if (response.code !== 200) {
+        throw (response.status);
+      }
+    })
+    .catch(error => {
+      dispatch(fetchProgressError(error));
+    });
+};
+
+export const fetchTop5Subjects = userID => dispatch => {
+  const token = localStorage.getItem('token');
+  const config = {
+    mode: 'cors',
+    method: 'GET',
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  };
+
+  const apiUrl = `http://localhost:3000/top/${userID}`;
+  dispatch(fetchProgressPending());
+  fetch(apiUrl, config)
+    .then(response => response.json())
+    .then(response => {
+      dispatch(fetchTop5ProgressSuccess(response));
       if (response.code !== 200) {
         throw (response.status);
       }

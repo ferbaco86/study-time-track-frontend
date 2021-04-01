@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import { setActiveTab } from '../actions';
 import autoLogin from '../api/autoLogin';
-import { fetchLongestSession } from '../api/fetchData';
+import { fetchLongestSession, fetchLatestSession, fetchTop5Subjects } from '../api/fetchData';
 import ErrorMessage from '../components/ErrorMessage';
 import LoaderSpinner from '../components/LoaderSpinner';
 import TitleName from '../components/TitleName';
@@ -29,6 +29,8 @@ const Progress = () => {
   useEffect(() => {
     if (user.user.id) {
       dispatch(fetchLongestSession(user.user.id));
+      dispatch(fetchLatestSession(user.user.id));
+      dispatch(fetchTop5Subjects(user.user.id));
     }
   }, [user]);
 
@@ -36,6 +38,7 @@ const Progress = () => {
   //   dispatch(resetSubjectData());
   // };
 
+  console.log(progress.top);
   const shouldComponentRender = () => {
     let isPending = false;
     if (progress.pending === false || progress.error !== null) {
@@ -57,7 +60,14 @@ const Progress = () => {
         {!token && <Redirect to="/" />}
         <TitleName>{user.user.username}</TitleName>
         <ProgressTitle>Latest Session</ProgressTitle>
-        <ProgressCard name="Pelusa" date="12/12/21" time="5" />
+        { progress.latest.title
+        && (
+        <ProgressCard
+          name={progress.latest.title}
+          date={new Date(progress.latest.created_at).toLocaleDateString()}
+          time={progress.latest.total_time}
+        />
+        )}
         <ProgressTitle>Longest Session</ProgressTitle>
         {progress.longest.title && (
         <ProgressCard
@@ -67,11 +77,14 @@ const Progress = () => {
         />
         )}
         <ProgressTitle>Top 5 Most Studied Subjects</ProgressTitle>
-        <ProgressCard name="Pelusa" date="12/12/21" time="5" />
-        <ProgressCard name="Pelusa" date="12/12/21" time="5" />
-        <ProgressCard name="Pelusa" date="12/12/21" time="5" />
-        <ProgressCard name="Pelusa" date="12/12/21" time="5" />
-        <ProgressCard name="Pelusa" date="12/12/21" time="5" />
+        { progress.top && progress.top.map(subject => (
+          <ProgressCard
+            key={subject.id}
+            name={subject.name}
+            date={new Date(subject.created_at).toLocaleDateString()}
+            time={subject.time}
+          />
+        ))}
       </div>
     </>
   );
