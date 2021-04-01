@@ -1,6 +1,6 @@
 import {
   FETCH_PROGRESS_PENDING, FETCH_LATEST_PROGRESS_SUCCESS, FETCH_LONGEST_PROGRESS_SUCCESS,
-  FETCH_TOP5_PROGRESS_SUCCESS, FETCH_PROGRESS_ERROR,
+  FETCH_TOP5_PROGRESS_SUCCESS, FETCH_PROGRESS_ERROR, RESET_PROGRESS,
 } from '../actions/constants';
 
 const initialState = {
@@ -41,6 +41,13 @@ const progressReducer = (state = initialState, action) => {
         ...state,
         pending: false,
         error: action.error,
+      };
+    case RESET_PROGRESS:
+      return {
+        ...state,
+        latest: {},
+        longest: {},
+        top: [],
       };
     default:
       return state;

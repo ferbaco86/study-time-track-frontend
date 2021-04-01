@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
-import { setActiveTab } from '../actions';
+import { resetProgress, setActiveTab } from '../actions';
 import autoLogin from '../api/autoLogin';
 import { fetchLongestSession, fetchLatestSession, fetchTop5Subjects } from '../api/fetchData';
 import ErrorMessage from '../components/ErrorMessage';
@@ -23,7 +23,7 @@ const Progress = () => {
   useEffect(() => {
     dispatch(autoLogin());
     dispatch(setActiveTab('Your Progress'));
-    dispatch(fetchLongestSession(user.user.id));
+    dispatch(resetProgress());
   }, []);
 
   useEffect(() => {
@@ -34,11 +34,6 @@ const Progress = () => {
     }
   }, [user]);
 
-  // const resetSubjectStore = () => {
-  //   dispatch(resetSubjectData());
-  // };
-
-  console.log(progress.top);
   const shouldComponentRender = () => {
     let isPending = false;
     if (progress.pending === false || progress.error !== null) {
@@ -48,7 +43,6 @@ const Progress = () => {
     }
     return isPending;
   };
-
   if (shouldComponentRender()) return <LoaderSpinner />;
   const errorText = `Error: ${progress.error}`;
   return (

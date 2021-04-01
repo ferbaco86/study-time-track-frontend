@@ -37,7 +37,7 @@ const Card = props => {
 };
 Card.propTypes = {
   title: PropTypes.string.isRequired,
-  time: PropTypes.string.isRequired,
+  time: PropTypes.number.isRequired,
 };
 
 export default Card;

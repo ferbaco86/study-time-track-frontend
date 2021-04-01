@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Link, Redirect } from 'react-router-dom';
+import { useForm } from 'react-hook-form';
 import {
   setCredentialUsername, setCredentialPassword, setActiveTab,
 } from '../actions/index';
@@ -40,6 +41,7 @@ const SignUser = props => {
   const { buttonText } = props;
   const dispatch = useDispatch();
   const { user } = useSelector(state => state);
+  const { handleSubmit, register, errors } = useForm();
 
   const setCredentialName = e => {
     const input = e.target.value;
@@ -51,9 +53,8 @@ const SignUser = props => {
     dispatch(setCredentialPassword(input));
   };
 
-  const setUser = e => {
-    e.preventDefault();
-    const signAction = e.target.textContent.toLowerCase();
+  const setUser = () => {
+    const signAction = buttonText.toLowerCase();
     dispatch(setUserData(signAction));
   };
 
@@ -78,10 +79,34 @@ const SignUser = props => {
       {user.error && (
       <ErrorMessage message={errorText} />
       )}
-      <SignForm>
-        <InputField id="username" type="text" onChange={setCredentialName} placeholder="Username" />
-        <InputField id="password" type="password" onChange={setCredentialPass} placeholder="Password" />
-        <FormButton type="submit" onClick={setUser}>{buttonText}</FormButton>
+      <SignForm onSubmit={handleSubmit(setUser)}>
+        {errors.username && (
+        <ErrorMessage message={errors.username.message} />
+        )}
+        <InputField
+          name="username"
+          type="text"
+          onChange={setCredentialName}
+          placeholder="Username"
+          ref={register({ required: 'Field required' })}
+        />
+        {errors.password && (
+        <ErrorMessage message={errors.password.message} />
+        )}
+        <InputField
+          name="password"
+          type="password"
+          onChange={setCredentialPass}
+          placeholder="Password"
+          ref={register({
+            required: 'Field required',
+            minLength: {
+              value: 3,
+              message: 'Password should be at least 3 characters long',
+            },
+          })}
+        />
+        <FormButton type="submit">{buttonText}</FormButton>
         {buttonText === 'Log In' && (
         <SignUpMessage>
           If you need an account. Click here

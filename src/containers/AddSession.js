@@ -1,5 +1,6 @@
 /* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
+import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
@@ -29,6 +30,7 @@ const AddSession = () => {
   const token = localStorage.getItem('token');
   const { user, session } = useSelector(state => state);
   const dispatch = useDispatch();
+  const { handleSubmit, register, errors } = useForm();
 
   const setTitle = e => {
     const input = e.target.value;
@@ -41,8 +43,7 @@ const AddSession = () => {
     dispatch(setActiveTab('Add Session'));
   }, []);
 
-  const setSession = e => {
-    e.preventDefault();
+  const setSession = () => {
     dispatch(setSessionData());
     dispatch(resetSubjectData());
   };
@@ -66,9 +67,18 @@ const AddSession = () => {
       )}
       {!token && <Redirect to="/" />}
       {session.redirect && <Redirect to={`/sessionDetail/${session.session.id}`} />}
-      <TitleForm>
-        <TitleInput onChange={setTitle} id="title" type="text" placeholder="Session title here..." />
-        <FormButton type="submit" onClick={setSession}>Add</FormButton>
+      {errors.title && (
+        <ErrorMessage message={errors.title.message} />
+      )}
+      <TitleForm onSubmit={handleSubmit(setSession)}>
+        <TitleInput
+          onChange={setTitle}
+          name="title"
+          type="text"
+          placeholder="Session title here..."
+          ref={register({ required: 'Field required' })}
+        />
+        <FormButton type="submit">Add</FormButton>
       </TitleForm>
     </>
   );

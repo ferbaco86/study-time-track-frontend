@@ -7,7 +7,7 @@ import {
   RESET_SUBJECTDATA, SET_SUBJECT_NAME, SET_SUBJECT_TIME, SET_ACTIVE_TAB, FETCH_SESSION_ID,
   SET_SESSION_REDIRECT, FETCH_PROGRESS_PENDING, FETCH_LATEST_PROGRESS_SUCCESS,
   FETCH_LONGEST_PROGRESS_SUCCESS, FETCH_TOP5_PROGRESS_SUCCESS,
-  FETCH_PROGRESS_ERROR,
+  FETCH_PROGRESS_ERROR, RESET_PROGRESS,
 } from './constants';
 
 export const setCredentialUsername = username => ({
@@ -144,4 +144,8 @@ export const fetchTop5ProgressSuccess = top => ({
 export const fetchProgressError = error => ({
   type: FETCH_PROGRESS_ERROR,
   error,
+});
+
+export const resetProgress = () => ({
+  type: RESET_PROGRESS,
 });
