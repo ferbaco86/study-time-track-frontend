@@ -17,7 +17,6 @@ export const fetchUserData = () => dispatch => {
   };
   const { id } = store.getState().user.user;
   const apiUrl = `https://fbc-study-track-api.herokuapp.com/users/${id}`;
-  // const apiUrl = `http://localhost:3000/users/${id}`;
 
   dispatch(fetchUserDataPending());
   fetch(apiUrl, config)
@@ -46,7 +45,6 @@ export const fetchSessionData = () => dispatch => {
   };
 
   const apiUrl = `https://fbc-study-track-api.herokuapp.com/sessions/${sessionID}`;
-  // const apiUrl = `http://localhost:3000/sessions/${sessionID}`;
 
   dispatch(setSessionDataPending());
   fetch(apiUrl, config)
@@ -73,7 +71,6 @@ export const fetchLongestSession = userID => dispatch => {
   };
 
   const apiUrl = `https://fbc-study-track-api.herokuapp.com/longest/${userID}`;
-  // const apiUrl = `http://localhost:3000/longest/${userID}`;
   dispatch(fetchProgressPending());
   fetch(apiUrl, config)
     .then(response => response.json())
@@ -99,7 +96,7 @@ export const fetchLatestSession = userID => dispatch => {
   };
 
   const apiUrl = `https://fbc-study-track-api.herokuapp.com/latest/${userID}`;
-  // const apiUrl = `http://localhost:3000/latest/${userID}`;
+
   dispatch(fetchProgressPending());
   fetch(apiUrl, config)
     .then(response => response.json())

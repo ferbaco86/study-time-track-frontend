@@ -1,0 +1,34 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ProgressCard renders correctly 1`] = `
+<div
+  className="sc-bdfBwQ cOFkCz"
+>
+  <div
+    className="sc-jSgupP jkFoLt"
+  >
+    <h2
+      className="sc-hKgILt djViUa"
+    >
+      01/01/01
+    </h2>
+    <h4
+      className="sc-gsTCUz ctLQUY"
+    >
+      test
+    </h4>
+  </div>
+  <div
+    className="sc-eCssSg fpbVIu"
+  >
+    <h2
+      className="sc-dlfnbm jJeQ"
+    >
+      10
+    </h2>
+    <span>
+      hr(s)
+    </span>
+  </div>
+</div>
+`;

@@ -1,0 +1,18 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`NavItem renders correctly 1`] = `
+<a
+  className="sc-bdfBwQ hoYbZe"
+  href="/test/path"
+  onClick={[Function]}
+>
+  <i
+    className="sc-gsTCUz cknVKz fas fa-plus"
+  />
+  <small
+    className="sc-dlfnbm eIUnSS"
+  >
+    test
+  </small>
+</a>
+`;

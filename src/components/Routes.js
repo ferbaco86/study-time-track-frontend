@@ -5,7 +5,7 @@ import SignUser from '../containers/SignUser';
 import UserDetail from '../containers/UserDetail';
 import SessionDetail from '../containers/SessionDetail';
 import NavFooter from './NavFooter';
-import TopBar from './TopBar';
+import TopBar from '../containers/TopBar';
 import Progress from '../containers/Progress';
 
 const Routes = () => (
