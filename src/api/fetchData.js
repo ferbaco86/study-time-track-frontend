@@ -125,7 +125,6 @@ export const fetchTop5Subjects = userID => dispatch => {
   };
 
   const apiUrl = `https://fbc-study-track-api.herokuapp.com/top/${userID}`;
-  // const apiUrl = `http://localhost:3000/top/${userID}`;
   dispatch(fetchProgressPending());
   fetch(apiUrl, config)
     .then(response => response.json())

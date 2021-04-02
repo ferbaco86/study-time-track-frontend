@@ -1,4 +1,3 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';

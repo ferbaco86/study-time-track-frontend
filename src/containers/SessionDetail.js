@@ -1,9 +1,9 @@
-/* eslint-disable jsx-a11y/label-has-associated-control */
 import React, { useEffect } from 'react';
 import PropTypes from 'prop-types';
+import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link, Redirect } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import {
   fetchSessionID,
   setSubjectName,
@@ -18,6 +18,7 @@ import LoaderSpinner from '../components/LoaderSpinner';
 import Card from '../components/Card';
 import TitleName from '../components/TitleName';
 import DateSubtitle from '../components/DateSubtitle';
+import FormButton from '../components/FormButton';
 
 const InputField = styled.input`
 border: none;
@@ -38,13 +39,6 @@ justify-content: center;
 align-items: center;
 padding: 1rem;`;
 
-const AddLink = styled(Link)`
-padding: 0.8rem 3rem;
-background-color: #addc91;
-color: white;
-border: none;
-text-decoration: none;`;
-
 const SubjectsContainer = styled.div`
 display: flex;
 flex-direction: column;
@@ -57,6 +51,7 @@ const SessionDetail = props => {
   const token = localStorage.getItem('token');
   const { session, subject } = useSelector(state => state);
   const dispatch = useDispatch();
+  const { handleSubmit, register, errors } = useForm();
 
   const setName = e => {
     const input = e.target.value;
@@ -81,6 +76,7 @@ const SessionDetail = props => {
 
   const setSubject = () => {
     dispatch(setSubjectData());
+    return <Redirect to={`/sessionDetail/${session.id}`} />;
   };
 
   const shouldComponentRender = () => {
@@ -103,10 +99,30 @@ const SessionDetail = props => {
       {!token && <Redirect to="/" />}
       <TitleName>{session.session.title}</TitleName>
       <DateSubtitle>{new Date(session.session.created_at).toLocaleDateString()}</DateSubtitle>
-      <SubjectForm>
-        <InputField onChange={setName} id="title" type="text" placeholder="What subject did you study?..." />
-        <InputField onChange={setTime} id="time" type="number" step="0.1" min="0" placeholder="How long(in hours) did you spend studying?..." />
-        <AddLink onClick={setSubject} type="button" to={`/sessionDetail/${session.id}`}>Add</AddLink>
+      <SubjectForm onSubmit={handleSubmit(setSubject)}>
+        {errors.title && (
+        <ErrorMessage message={errors.title.message} />
+        )}
+        <InputField
+          onChange={setName}
+          name="title"
+          type="text"
+          placeholder="What subject did you study?..."
+          ref={register({ required: 'Field required' })}
+        />
+        {errors.time && (
+        <ErrorMessage message={errors.time.message} />
+        )}
+        <InputField
+          onChange={setTime}
+          name="time"
+          type="number"
+          step="0.1"
+          min="0"
+          placeholder="How long(in hours) did you spend studying?..."
+          ref={register({ required: 'Field required' })}
+        />
+        <FormButton type="submit">Add</FormButton>
       </SubjectForm>
       <SubjectsContainer>
         {session.session.subjects
