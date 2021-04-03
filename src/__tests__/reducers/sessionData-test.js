@@ -4,7 +4,7 @@ import {
 } from '../../actions/constants';
 import sessionDataReducer from '../../reducers/sessionData';
 
-describe('Data Reducer', () => {
+describe('Session Data Reducer', () => {
   it('Return the default state', () => {
     const mockState = {
       pending: false,
