@@ -2,8 +2,8 @@
 
 # Study-Time-Track-App: Frontend
 
-> Study Time Track App Frontend is a web app built with React, which connects to the [Study-Time-Track-Backend](https://github.com/ferbaco86/study-time-track-frontend) 
-The app allows the user to register the time he/she spends on a given task. 
+> Study Time Track App Frontend is a web app built with React, which connects to the [Study-Time-Track-Backend](https://github.com/ferbaco86/study-time-track-frontend).
+> The app allows the user to register the time he/she spends on a given task. 
 
 
 ## Main Features
@@ -22,10 +22,10 @@ The app allows the user to register the time he/she spends on a given task.
 
 ## Screenshots
 
-![Login](https://user-images.githubusercontent.com/52765379/113473364-829b5300-943f-11eb-875c-390dcb1095b4.png)
-![AddSession](https://user-images.githubusercontent.com/52765379/113473358-80d18f80-943f-11eb-875f-3f55860ee19c.png)
-![CheckSessions](https://user-images.githubusercontent.com/52765379/113473354-7f07cc00-943f-11eb-8f47-2c8eff01820d.png)
-![Progress](https://user-images.githubusercontent.com/52765379/113473346-7ca57200-943f-11eb-8f5f-95251ee27d34.png)
+<img src="https://user-images.githubusercontent.com/52765379/113473364-829b5300-943f-11eb-875c-390dcb1095b4.png" width="370" height="750">
+<img src="https://user-images.githubusercontent.com/52765379/113473358-80d18f80-943f-11eb-875f-3f55860ee19c.png" width="370" height="750">
+<img src="https://user-images.githubusercontent.com/52765379/113473354-7f07cc00-943f-11eb-8f47-2c8eff01820d.png" width="370" height="750">
+<img src="https://user-images.githubusercontent.com/52765379/113473346-7ca57200-943f-11eb-8f5f-95251ee27d34.png" width="370" height="750">
 
 
 ## Built With
@@ -49,7 +49,7 @@ To get a local copy up and running follow these simple steps.
 Clone the repo with:
 
 ```
-https://github.com/ferbaco86/study-time-track-frontend.git
+git clone https://github.com/ferbaco86/study-time-track-frontend.git
 ```
 
 ### Setup
@@ -87,8 +87,7 @@ Your app is ready to be deployed!
 To run all tests use this command:
 
 ```
-    npm test
-    
+npm test    
 ```
 
 
@@ -112,7 +111,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-[Design idea by Gregoire Vella on Behance](https://www.behance.net/gregoirevella)]
+[Design idea by Gregoire Vella on Behance](https://www.behance.net/gregoirevella)
 
 ## 📝 License
 
