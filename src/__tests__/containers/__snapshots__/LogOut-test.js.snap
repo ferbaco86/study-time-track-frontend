@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`LogOut renders correctly 1`] = `
+<a
+  className="sc-bdfBwQ hoYbZe"
+  href="/"
+  onClick={[Function]}
+>
+  <i
+    className="sc-gsTCUz cknVKz fas fa-sign-out-alt"
+  />
+  <small>
+    Log Out
+  </small>
+</a>
+`;

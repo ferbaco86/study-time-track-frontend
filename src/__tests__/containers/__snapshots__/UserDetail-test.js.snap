@@ -1,0 +1,83 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`UserDetail renders correctly 1`] = `
+<div>
+  <h1
+    className="sc-eCssSg gJiiYa"
+  >
+    ferbaco
+  </h1>
+  <a
+    className="sc-pFZIQ hRelQs"
+    href="/sessionDetail/1"
+    onClick={[Function]}
+  >
+    <div
+      className="sc-jSgupP gdcAjd"
+    >
+      <h4
+        className="sc-gKsewC ghVxdN"
+      >
+        31/3/2021
+      </h4>
+      <div
+        className="sc-fubCfw kdoYVX"
+      >
+        <h2
+          className="sc-iBPRYJ epREFZ"
+        >
+          Pelusa
+        </h2>
+      </div>
+    </div>
+  </a>
+  <a
+    className="sc-pFZIQ hRelQs"
+    href="/sessionDetail/2"
+    onClick={[Function]}
+  >
+    <div
+      className="sc-jSgupP gdcAjd"
+    >
+      <h4
+        className="sc-gKsewC ghVxdN"
+      >
+        31/3/2021
+      </h4>
+      <div
+        className="sc-fubCfw kdoYVX"
+      >
+        <h2
+          className="sc-iBPRYJ epREFZ"
+        >
+          React
+        </h2>
+      </div>
+    </div>
+  </a>
+  <a
+    className="sc-pFZIQ hRelQs"
+    href="/sessionDetail/4"
+    onClick={[Function]}
+  >
+    <div
+      className="sc-jSgupP gdcAjd"
+    >
+      <h4
+        className="sc-gKsewC ghVxdN"
+      >
+        31/3/2021
+      </h4>
+      <div
+        className="sc-fubCfw kdoYVX"
+      >
+        <h2
+          className="sc-iBPRYJ epREFZ"
+        >
+          C#
+        </h2>
+      </div>
+    </div>
+  </a>
+</div>
+`;

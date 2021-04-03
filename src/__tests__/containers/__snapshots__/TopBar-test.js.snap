@@ -1,0 +1,11 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`TopBar renders correctly 1`] = `
+<header
+  className="sc-bdfBwQ cudsVb"
+>
+  <h3>
+    Test
+  </h3>
+</header>
+`;
