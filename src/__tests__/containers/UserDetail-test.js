@@ -4,7 +4,6 @@ import {
 import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import renderer from 'react-test-renderer';
 import { createStore, applyMiddleware } from 'redux';
 import UserDetail from '../../containers/UserDetail';
 
@@ -55,18 +54,5 @@ describe('Rendering component', () => {
     await waitFor(() => {
       expect(screen.getByText('ferbaco'));
     });
-  });
-});
-
-describe('UserDetail', () => {
-  it('renders correctly', () => {
-    const snap = renderer.create(
-      <BrowserRouter>
-        <Provider store={store}>
-          <UserDetail />
-        </Provider>
-      </BrowserRouter>,
-    ).toJSON();
-    expect(snap).toMatchSnapshot();
   });
 });
