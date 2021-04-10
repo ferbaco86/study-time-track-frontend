@@ -1,0 +1,25 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card renders correctly 1`] = `
+<div
+  className="sc-bdfBwQ cOFkCz"
+>
+  <h4
+    className="sc-gsTCUz ctLQUY"
+  >
+    Test
+  </h4>
+  <div
+    className="sc-hKgILt BstyB"
+  >
+    <h2
+      className="sc-dlfnbm jJeQ"
+    >
+      5
+    </h2>
+    <span>
+      hr(s)
+    </span>
+  </div>
+</div>
+`;

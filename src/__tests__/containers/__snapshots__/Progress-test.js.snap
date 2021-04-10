@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Progress renders correctly 1`] = `
+<div>
+  <h1
+    className="sc-eCssSg gJiiYa"
+  />
+  <h4
+    className="sc-kEjbxe iSVVHw"
+  >
+    Latest Session
+  </h4>
+  <h4
+    className="sc-kEjbxe iSVVHw"
+  >
+    Longest Session
+  </h4>
+  <h4
+    className="sc-kEjbxe iSVVHw"
+  >
+    Top 5 Most Studied Subjects
+  </h4>
+</div>
+`;

@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Add Session renders correctly 1`] = `
+<form
+  className="sc-gKsewC bGbqFb"
+  onSubmit={[Function]}
+>
+  <input
+    className="sc-jSgupP gqoFJV"
+    name="title"
+    onChange={[Function]}
+    placeholder="Session title here..."
+    type="text"
+  />
+  <button
+    className="sc-eCssSg fTkYr"
+    type="submit"
+  >
+    Add
+  </button>
+</form>
+`;

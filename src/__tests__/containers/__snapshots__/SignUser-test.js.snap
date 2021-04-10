@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SignUser renders correctly 1`] = `
+<form
+  className="sc-gKsewC epFvqN"
+  onSubmit={[Function]}
+>
+  <input
+    className="sc-jSgupP ihezSj"
+    name="username"
+    onChange={[Function]}
+    placeholder="Username"
+    type="text"
+  />
+  <input
+    className="sc-jSgupP ihezSj"
+    name="password"
+    onChange={[Function]}
+    placeholder="Password"
+    type="password"
+  />
+  <button
+    className="sc-eCssSg fTkYr"
+    type="submit"
+  >
+    Log In
+  </button>
+  <p
+    className="sc-iBPRYJ CjylJ"
+  >
+    If you need an account. Click here
+    <a
+      className="sc-fubCfw iOMYXe"
+      href="/signup"
+      onClick={[Function]}
+    >
+       Sign Up 
+    </a>
+  </p>
+</form>
+`;

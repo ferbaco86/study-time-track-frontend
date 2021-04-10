@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SessionCard renders correctly 1`] = `
+<div
+  className="sc-bdfBwQ kqIhaO"
+>
+  <h4
+    className="sc-gsTCUz hyNTkz"
+  >
+    01/01/01
+  </h4>
+  <div
+    className="sc-hKgILt BstyB"
+  >
+    <h2
+      className="sc-dlfnbm jJeQ"
+    >
+      New
+    </h2>
+  </div>
+</div>
+`;

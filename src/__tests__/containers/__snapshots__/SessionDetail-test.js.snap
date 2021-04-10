@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SessionDetail renders correctly 1`] = `
+<div
+  className="sc-dlfnbm fOiroy"
+>
+  LOADING
+  <div
+    className="sc-hKgILt bTpDwc"
+  />
+</div>
+`;

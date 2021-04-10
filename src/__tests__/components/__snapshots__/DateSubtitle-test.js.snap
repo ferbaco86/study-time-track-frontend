@@ -1,0 +1,9 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`DateSubtitle renders correctly 1`] = `
+<p
+  className="sc-bdfBwQ ccCOjI"
+>
+  12/21/21
+</p>
+`;
