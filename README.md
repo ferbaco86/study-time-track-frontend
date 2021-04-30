@@ -2,7 +2,7 @@
 
 # Study-Time-Track-App: Frontend
 
-> Study Time Track App Frontend is a web app built with React, which connects to the [Study-Time-Track-Backend](https://github.com/ferbaco86/study-time-track-frontend).
+> Study Time Track App Frontend is a web app built with React, which connects to the [Study-Time-Track-Backend](https://github.com/ferbaco86/study-time-track-backend).
 > The app allows the user to register the time he/she spends on a given task. 
 
 
